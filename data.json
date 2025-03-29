@@ -7,7 +7,7 @@
       "description": "An in-depth look at how AI is reshaping the global economy.",
       "content": "Artificial Intelligence is revolutionizing industries around the world. Its impact on markets, employment, and innovation is undeniable.",
       "keywords": ["AI", "economy", "2025", "technology"],
-      "image": "https://via.placeholder.com/600x400?text=AI+Economy"
+      "image": "https://picsum.photos/600/400?random=3"
     },
     {
       "category": "Tech",
@@ -16,7 +16,7 @@
       "description": "Reviews of the latest gadgets hitting the market.",
       "content": "This year has seen a surge in innovative gadgets, each with unique features and cutting-edge technology. Our reviews cover every detail.",
       "keywords": ["gadgets", "reviews", "tech"],
-      "image": "https://via.placeholder.com/600x400?text=Gadget+Reviews"
+      "image": "https://picsum.photos/600/400?random=4"
     },
     {
       "category": "India",
@@ -25,7 +25,7 @@
       "description": "Exploring the dynamic startup culture in India.",
       "content": "India has become a hotspot for startups, boasting a vibrant ecosystem fueled by innovation, government support, and entrepreneurial spirit.",
       "keywords": ["startup", "India", "innovation"],
-      "image": "https://via.placeholder.com/600x400?text=Startup+India"
+      "image": "https://picsum.photos/600/400?random=5"
     },
     {
       "category": "Economics",
@@ -34,7 +34,7 @@
       "description": "Latest trends in the global market affecting investments.",
       "content": "The global market is showing interesting trends in the wake of economic recovery. Experts predict significant shifts in investment strategies.",
       "keywords": ["market", "economics", "global"],
-      "image": "https://via.placeholder.com/600x400?text=Market+Trends"
+      "image": "https://picsum.photos/600/400?random=6"
     },
     {
       "category": "World",
@@ -43,7 +43,7 @@
       "description": "A report on the ongoing challenges of climate change.",
       "content": "Climate change continues to pose significant challenges across the globe. From extreme weather to rising sea levels, the impact is profound.",
       "keywords": ["climate", "environment", "world"],
-      "image": "https://via.placeholder.com/600x400?text=Climate+Change"
+      "image": "https://picsum.photos/600/400?random=7"
     }
   ]
 }

@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const newsContainer = document.getElementById('newsContainer');
   const trendingContainer = document.getElementById('trendingContainer');
   const navLinks = document.querySelectorAll('.navbar a');
+  const postModal = new bootstrap.Modal(document.getElementById('postModal'));
+  const modalTitle = document.getElementById('postModalLabel');
+  const modalImage = document.getElementById('modalImage');
+  const modalContent = document.getElementById('modalContent');
+  const modalCategory = document.getElementById('modalCategory');
+
+  let allPosts = [];
 
   // Fetch news data from data.json and filter by category if needed
   function fetchNews(category = 'all') {
@@ -15,9 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return response.json();
       })
       .then(data => {
-        let posts = data.posts;
+        allPosts = data.posts;
+        let posts = allPosts;
         if (category !== 'all') {
-          posts = posts.filter(post => post.category.toLowerCase() === category.toLowerCase());
+          posts = allPosts.filter(post => post.category.toLowerCase() === category.toLowerCase());
         }
         renderLatestNews(posts);
         renderTrendingNews(posts);
@@ -28,16 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  // Render the "Latest News" grid
+  // Render the "Latest News" grid with clickable cards
   function renderLatestNews(posts) {
     newsContainer.innerHTML = '';
     if (posts.length === 0) {
       newsContainer.innerHTML = '<p>No news available.</p>';
       return;
     }
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
       const card = document.createElement('div');
-      card.className = 'news-card';
+      card.className = 'news-card col';
+      // Make card clickable: add data-index attribute to reference the post
+      card.setAttribute('data-index', index);
       let cardHTML = '';
       if (post.image) {
         cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
@@ -48,17 +58,22 @@ document.addEventListener('DOMContentLoaded', function() {
       cardHTML += `<small>${post.category}</small>`;
       cardHTML += `</div>`;
       card.innerHTML = cardHTML;
+      // Add click event to open modal with full post
+      card.addEventListener('click', () => {
+        openPostModal(post);
+      });
       newsContainer.appendChild(card);
     });
   }
 
-  // Render the "Trending" section (using the first 3 posts as trending)
+  // Render the "Trending" section with clickable items (first 3 posts)
   function renderTrendingNews(posts) {
     trendingContainer.innerHTML = '';
     const trendingPosts = posts.slice(0, 3);
-    trendingPosts.forEach(post => {
+    trendingPosts.forEach((post, index) => {
       const trendingItem = document.createElement('div');
       trendingItem.className = 'trending-item';
+      trendingItem.setAttribute('data-index', index);
       let itemHTML = '';
       if (post.image) {
         itemHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
@@ -68,8 +83,27 @@ document.addEventListener('DOMContentLoaded', function() {
       itemHTML += `<small>${post.category}</small>`;
       itemHTML += `</div>`;
       trendingItem.innerHTML = itemHTML;
+      // Add click event to open modal with full post
+      trendingItem.addEventListener('click', () => {
+        openPostModal(post);
+      });
       trendingContainer.appendChild(trendingItem);
     });
+  }
+
+  // Open Bootstrap modal with full post content
+  function openPostModal(post) {
+    modalTitle.textContent = post.title;
+    modalContent.textContent = post.content;
+    modalCategory.textContent = `Category: ${post.category}`;
+    if (post.image) {
+      modalImage.src = post.image;
+      modalImage.alt = post.title;
+      modalImage.style.display = 'block';
+    } else {
+      modalImage.style.display = 'none';
+    }
+    postModal.show();
   }
 
   // Initial load: fetch all news

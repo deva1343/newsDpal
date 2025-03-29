@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalContent = document.getElementById('modalContent');
   const modalCategory = document.getElementById('modalCategory');
 
-  let allPosts = [];
-
   // Fetch news data from data.json and filter by category if needed
   function fetchNews(category = 'all') {
     fetch('data.json')
@@ -22,10 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return response.json();
       })
       .then(data => {
-        allPosts = data.posts;
-        let posts = allPosts;
+        let posts = data.posts;
         if (category !== 'all') {
-          posts = allPosts.filter(post => post.category.toLowerCase() === category.toLowerCase());
+          posts = posts.filter(post => post.category.toLowerCase() === category.toLowerCase());
         }
         renderLatestNews(posts);
         renderTrendingNews(posts);
@@ -36,21 +33,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  // Render the "Latest News" grid with clickable cards
+  // Render the "Latest News" grid
   function renderLatestNews(posts) {
     newsContainer.innerHTML = '';
     if (posts.length === 0) {
       newsContainer.innerHTML = '<p>No news available.</p>';
       return;
     }
-    posts.forEach((post, index) => {
+    posts.forEach(post => {
       const card = document.createElement('div');
-      card.className = 'news-card col';
-      // Make card clickable: add data-index attribute to reference the post
-      card.setAttribute('data-index', index);
+      card.className = 'news-card';
       let cardHTML = '';
       if (post.image) {
-        cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
+        cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">`;
       }
       cardHTML += `<div class="news-card-content">`;
       cardHTML += `<h3>${post.title}</h3>`;
@@ -58,52 +53,60 @@ document.addEventListener('DOMContentLoaded', function() {
       cardHTML += `<small>${post.category}</small>`;
       cardHTML += `</div>`;
       card.innerHTML = cardHTML;
-      // Add click event to open modal with full post
+      
+      // Make card clickable to open modal with full post
       card.addEventListener('click', () => {
-        openPostModal(post);
+        modalTitle.textContent = post.title;
+        if (post.image) {
+          modalImage.src = post.image;
+          modalImage.alt = post.title;
+          modalImage.style.display = 'block';
+        } else {
+          modalImage.style.display = 'none';
+        }
+        modalContent.textContent = post.content;
+        modalCategory.textContent = `Category: ${post.category}`;
+        postModal.show();
       });
+      
       newsContainer.appendChild(card);
     });
   }
 
-  // Render the "Trending" section with clickable items (first 3 posts)
+  // Render the "Trending" section (using the first 3 posts as trending)
   function renderTrendingNews(posts) {
     trendingContainer.innerHTML = '';
     const trendingPosts = posts.slice(0, 3);
-    trendingPosts.forEach((post, index) => {
+    trendingPosts.forEach(post => {
       const trendingItem = document.createElement('div');
       trendingItem.className = 'trending-item';
-      trendingItem.setAttribute('data-index', index);
       let itemHTML = '';
       if (post.image) {
-        itemHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
+        itemHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">`;
       }
       itemHTML += `<div class="trending-item-content">`;
       itemHTML += `<h4>${post.title}</h4>`;
       itemHTML += `<small>${post.category}</small>`;
       itemHTML += `</div>`;
       trendingItem.innerHTML = itemHTML;
-      // Add click event to open modal with full post
+      
+      // Make trending item clickable as well
       trendingItem.addEventListener('click', () => {
-        openPostModal(post);
+        modalTitle.textContent = post.title;
+        if (post.image) {
+          modalImage.src = post.image;
+          modalImage.alt = post.title;
+          modalImage.style.display = 'block';
+        } else {
+          modalImage.style.display = 'none';
+        }
+        modalContent.textContent = post.content;
+        modalCategory.textContent = `Category: ${post.category}`;
+        postModal.show();
       });
+      
       trendingContainer.appendChild(trendingItem);
     });
-  }
-
-  // Open Bootstrap modal with full post content
-  function openPostModal(post) {
-    modalTitle.textContent = post.title;
-    modalContent.textContent = post.content;
-    modalCategory.textContent = `Category: ${post.category}`;
-    if (post.image) {
-      modalImage.src = post.image;
-      modalImage.alt = post.title;
-      modalImage.style.display = 'block';
-    } else {
-      modalImage.style.display = 'none';
-    }
-    postModal.show();
   }
 
   // Initial load: fetch all news

@@ -26,6 +26,24 @@
       "content": "India has become a hotspot for startups, boasting a vibrant ecosystem fueled by innovation, government support, and entrepreneurial spirit.",
       "keywords": ["startup", "India", "innovation"],
       "image": "https://via.placeholder.com/600x400?text=Startup+India"
+    },
+    {
+      "category": "Economics",
+      "slug": "global-market-trends",
+      "title": "Global Market Trends",
+      "description": "Latest trends in the global market affecting investments.",
+      "content": "The global market is showing interesting trends in the wake of economic recovery. Experts predict significant shifts in investment strategies.",
+      "keywords": ["market", "economics", "global"],
+      "image": "https://via.placeholder.com/600x400?text=Market+Trends"
+    },
+    {
+      "category": "World",
+      "slug": "climate-change-challenges",
+      "title": "Climate Change Challenges",
+      "description": "A report on the ongoing challenges of climate change.",
+      "content": "Climate change continues to pose significant challenges across the globe. From extreme weather to rising sea levels, the impact is profound.",
+      "keywords": ["climate", "environment", "world"],
+      "image": "https://via.placeholder.com/600x400?text=Climate+Change"
     }
   ]
 }

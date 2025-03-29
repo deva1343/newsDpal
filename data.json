@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "category": "World",
+      "slug": "impact-of-ai-on-economy-2025",
+      "title": "Impact of AI on Economy 2025",
+      "description": "An in-depth look at how AI is reshaping the global economy.",
+      "content": "Artificial Intelligence is revolutionizing industries around the world. Its impact on markets, employment, and innovation is undeniable.",
+      "keywords": ["AI", "economy", "2025", "technology"],
+      "image": "https://via.placeholder.com/600x400?text=AI+Economy"
+    },
+    {
+      "category": "Tech",
+      "slug": "latest-gadget-reviews",
+      "title": "Latest Gadget Reviews",
+      "description": "Reviews of the latest gadgets hitting the market.",
+      "content": "This year has seen a surge in innovative gadgets, each with unique features and cutting-edge technology. Our reviews cover every detail.",
+      "keywords": ["gadgets", "reviews", "tech"],
+      "image": "https://via.placeholder.com/600x400?text=Gadget+Reviews"
+    },
+    {
+      "category": "India",
+      "slug": "startup-ecosystem-in-india",
+      "title": "Startup Ecosystem in India",
+      "description": "Exploring the dynamic startup culture in India.",
+      "content": "India has become a hotspot for startups, boasting a vibrant ecosystem fueled by innovation, government support, and entrepreneurial spirit.",
+      "keywords": ["startup", "India", "innovation"],
+      "image": "https://via.placeholder.com/600x400?text=Startup+India"
+    }
+  ]
+}

@@ -30,12 +30,25 @@ header {
   font-weight: bold;
 }
 
-/* Override Bootstrap navbar link styles for our header */
+/* Navbar: Force horizontal layout on all devices */
+.navbar {
+  overflow-x: auto;
+}
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px;
+  white-space: nowrap;
+}
+.navbar .nav-item {
+  flex: 0 0 auto;
+}
 .navbar .nav-link {
   font-weight: 500;
   padding: 8px 12px;
   border-radius: 4px;
   transition: background 0.3s;
+  color: #fff;
 }
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
@@ -190,7 +203,7 @@ footer {
   .logo {
     font-size: 1.6rem;
   }
-  /* Bootstrap navbar handles mobile nav */
+  /* Navbar remains horizontal using overflow-x */
   .hero {
     height: 300px;
   }

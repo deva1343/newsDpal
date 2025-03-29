@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fetch news data from data.json and filter by category if needed
   function fetchNews(category = 'all') {
     fetch('data.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not OK');
+        }
+        return response.json();
+      })
       .then(data => {
         let posts = data.posts;
         if (category !== 'all') {
@@ -17,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
         renderLatestNews(posts);
         renderTrendingNews(posts);
       })
-      .catch(error => console.error('Error fetching news:', error));
+      .catch(error => {
+        console.error('Error fetching news:', error);
+        newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
+      });
   }
 
   // Render the "Latest News" grid

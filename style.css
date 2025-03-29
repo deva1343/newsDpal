@@ -20,6 +20,7 @@ header {
 
 .header-top {
   max-width: 1200px;
+  margin: 0 auto;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -31,29 +32,27 @@ header {
   font-weight: bold;
 }
 
-/* Use Bootstrap nav styling for desktop; mobile is handled by Bootstrap */
+/* Override Bootstrap navbar link styles if needed */
 .navbar .nav-link {
   font-weight: 500;
   padding: 8px 12px;
+  border-radius: 4px;
   transition: background 0.3s;
 }
-
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   background: #444;
-  border-radius: 4px;
 }
 
 /* Hero section */
 .hero {
-  background: url('https://via.placeholder.com/1200x400') center center/cover no-repeat;
+  background: url('https://via.placeholder.com/1200x400?text=News+Portal') center center/cover no-repeat;
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-
 .hero::after {
   content: "";
   position: absolute;
@@ -61,20 +60,17 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
 }
-
 .hero-content {
   position: relative;
   color: #fff;
   text-align: center;
 }
-
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 10px;
 }
-
 .hero-content p {
   font-size: 1.2rem;
 }
@@ -83,18 +79,23 @@ header {
 main {
   max-width: 1200px;
   margin: 20px auto;
+  padding: 0 20px;
 }
 
 /* Latest News grid */
 .latest-news {
   margin-bottom: 40px;
 }
-
 .latest-news h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   border-bottom: 2px solid #222;
   padding-bottom: 5px;
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 /* News card styles */
@@ -102,35 +103,31 @@ main {
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-
 .news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
 .news-card img {
   width: 100%;
   display: block;
+  /* Hide broken image icon */
+  onerror: "this.style.display='none'";
 }
-
 .news-card-content {
   padding: 15px;
 }
-
 .news-card-content h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
 }
-
 .news-card-content p {
   font-size: 0.95rem;
   margin-bottom: 10px;
 }
-
 .news-card-content small {
   color: #777;
 }
@@ -139,48 +136,43 @@ main {
 .trending-news {
   margin-bottom: 40px;
 }
-
 .trending-news h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   border-bottom: 2px solid #222;
   padding-bottom: 5px;
 }
-
 .trending-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
 .trending-item {
   background: #fff;
   padding: 10px 15px;
   border-radius: 6px;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: background 0.3s;
   cursor: pointer;
 }
-
 .trending-item:hover {
   background: #f0f0f0;
 }
-
 .trending-item img {
   width: 80px;
   height: 60px;
   object-fit: cover;
   margin-right: 15px;
   border-radius: 4px;
+  /* Hide broken image icon */
+  onerror: "this.style.display='none'";
 }
-
 .trending-item-content h4 {
   font-size: 1rem;
   margin-bottom: 5px;
 }
-
 .trending-item-content small {
   color: #777;
 }
@@ -194,9 +186,32 @@ footer {
   margin-top: 40px;
 }
 
-/* Responsive adjustments for smaller devices are handled by Bootstrap,
-   additional tweaks below if needed. */
+/* Responsive adjustments for tablets and larger phones */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Additional adjustments for smaller mobile devices */
 @media (max-width: 480px) {
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .logo {
+    font-size: 1.6rem;
+  }
+  .navbar .nav-link {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
   .hero {
     height: 300px;
   }
@@ -204,6 +219,31 @@ footer {
     font-size: 2rem;
   }
   .hero-content p {
+    font-size: 1rem;
+  }
+  main {
+    padding: 0 10px;
+  }
+  .latest-news h2,
+  .trending-news h2 {
+    font-size: 1.8rem;
+  }
+  .news-card-content h3 {
+    font-size: 1.1rem;
+  }
+  .news-card-content p {
+    font-size: 0.9rem;
+  }
+  .trending-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .trending-item img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 10px;
+  }
+  .trending-item-content h4 {
     font-size: 1rem;
   }
 }

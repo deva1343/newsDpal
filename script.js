@@ -1,73 +1,61 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', function() {
-  const postsContainer = document.getElementById('postsContainer');
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const loadingSpinner = document.getElementById('loading');
+  const newsContainer = document.getElementById('newsContainer');
   const navLinks = document.querySelectorAll('.navbar a');
 
-  // Toggle dark mode
-  darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-
   // Function to fetch JSON data
-  function fetchPosts(category = 'all') {
-    // Show spinner
-    loadingSpinner.style.display = 'block';
+  function fetchNews(category = 'all') {
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
         let posts = data.posts;
-        // Filter by category if not "all"
         if (category !== 'all') {
           posts = posts.filter(post => post.category.toLowerCase() === category.toLowerCase());
         }
-        renderPosts(posts);
+        renderNews(posts);
       })
-      .catch(error => console.error('Error loading posts:', error));
+      .catch(error => console.error('Error fetching news:', error));
   }
 
-  // Function to render posts dynamically
-  function renderPosts(posts) {
-    postsContainer.innerHTML = '';
-    // Hide spinner when posts are rendered
-    loadingSpinner.style.display = 'none';
-
+  // Function to render news cards
+  function renderNews(posts) {
+    newsContainer.innerHTML = '';
     if (posts.length === 0) {
-      postsContainer.innerHTML = '<p>No posts available for this category.</p>';
+      newsContainer.innerHTML = '<p>No news available at the moment.</p>';
       return;
     }
-
     posts.forEach(post => {
-      const postElement = document.createElement('div');
-      postElement.className = 'post';
+      const card = document.createElement('div');
+      card.className = 'news-card';
       
-      // Build post HTML
-      let postHTML = `<h2>${post.title}</h2>`;
+      let cardHTML = '';
       if (post.image) {
-        postHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
+        cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy">`;
       }
-      postHTML += `<p>${post.content}</p>`;
-      postHTML += `<small>Category: ${post.category}</small>`;
+      cardHTML += `<div class="news-card-content">`;
+      cardHTML += `<h3>${post.title}</h3>`;
+      cardHTML += `<p>${post.content.substring(0, 100)}...</p>`;
+      cardHTML += `<small>${post.category}</small>`;
+      cardHTML += `</div>`;
       
-      postElement.innerHTML = postHTML;
-      postsContainer.appendChild(postElement);
+      card.innerHTML = cardHTML;
+      newsContainer.appendChild(card);
     });
   }
 
-  // Initial load: fetch all posts
-  fetchPosts();
+  // Initial load: fetch all news
+  fetchNews();
 
-  // Filter posts by category when a navbar link is clicked
+  // Filter posts by category on navbar click
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      // Remove active state from all links and add to the clicked link
+      // Set active class
       navLinks.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
       const category = link.getAttribute('data-category');
-      fetchPosts(category);
+      fetchNews(category);
     });
   });
 });

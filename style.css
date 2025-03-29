@@ -218,7 +218,6 @@ footer {
   .logo {
     font-size: 1.6rem;
   }
-  /* Navbar remains horizontal using overflow-x */
   .hero {
     height: 300px;
   }

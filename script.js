@@ -4,12 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const newsContainer = document.getElementById('newsContainer');
   const trendingContainer = document.getElementById('trendingContainer');
   const navLinks = document.querySelectorAll('.navbar a');
-  const darkModeToggle = document.getElementById('darkModeToggle');
-
-  // Toggle dark mode
-  darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
 
   // Fetch news data from data.json and filter by category if needed
   function fetchNews(category = 'all') {
@@ -19,11 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let posts = data.posts;
         if (category !== 'all') {
           posts = posts.filter(post => post.category.toLowerCase() === category.toLowerCase());
-        }
-        // Automated SEO metadata: update meta description with first post's description (if exists)
-        if (posts.length > 0) {
-          const metaDesc = document.querySelector('meta[name="description"]');
-          metaDesc.setAttribute("content", posts[0].description);
         }
         renderLatestNews(posts);
         renderTrendingNews(posts);

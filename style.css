@@ -42,17 +42,24 @@ header {
   background: #444;
 }
 
+/* News Ticker */
+.news-ticker {
+  font-size: 0.9rem;
+}
+.news-ticker marquee {
+  color: #fff;
+}
+
 /* Hero section */
 .hero {
+  position: relative;
   background: url('https://via.placeholder.com/1200x400') center center/cover no-repeat;
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.hero::after {
-  content: "";
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -71,25 +78,24 @@ header {
 }
 .hero-content p {
   font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-/* Main content */
+/* Main Content */
 main {
   max-width: 1200px;
   margin: 20px auto;
   padding: 0 20px;
 }
-.latest-news, .trending-news {
-  margin-bottom: 40px;
-}
-.latest-news h2, .trending-news h2 {
+.latest-news h2,
+.trending-news h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   border-bottom: 2px solid #222;
   padding-bottom: 5px;
 }
 
-/* News grid and card styles */
+/* News Grid & Card Styles */
 .news-grid .news-card {
   background: #fff;
   border-radius: 8px;
@@ -105,7 +111,6 @@ main {
 .news-grid .news-card img {
   width: 100%;
   display: block;
-  /* Hide image if not loaded */
 }
 .news-card-content {
   padding: 15px;
@@ -122,7 +127,7 @@ main {
   color: #777;
 }
 
-/* Trending list styles */
+/* Trending List Styles */
 .trending-list {
   display: flex;
   flex-direction: column;
@@ -185,7 +190,7 @@ footer {
   .logo {
     font-size: 1.6rem;
   }
-  /* Bootstrap navbar will handle mobile styles for nav */
+  /* Bootstrap navbar handles mobile nav */
   .hero {
     height: 300px;
   }
@@ -198,7 +203,8 @@ footer {
   main {
     padding: 0 10px;
   }
-  .latest-news h2, .trending-news h2 {
+  .latest-news h2,
+  .trending-news h2 {
     font-size: 1.8rem;
   }
   .news-card-content h3 {

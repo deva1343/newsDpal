@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  // Render the "Latest News" grid
+  // Render the "Latest News" grid with clickable cards
   function renderLatestNews(posts) {
     newsContainer.innerHTML = '';
     if (posts.length === 0) {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     posts.forEach(post => {
       const card = document.createElement('div');
-      card.className = 'news-card';
+      card.className = 'news-card col';
       let cardHTML = '';
       if (post.image) {
         cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">`;
@@ -53,27 +53,24 @@ document.addEventListener('DOMContentLoaded', function() {
       cardHTML += `<small>${post.category}</small>`;
       cardHTML += `</div>`;
       card.innerHTML = cardHTML;
-      
-      // Make card clickable to open modal with full post
-      card.addEventListener('click', () => {
+      // Add click event to open modal with full post content
+      card.addEventListener('click', function() {
         modalTitle.textContent = post.title;
+        modalContent.textContent = post.content;
+        modalCategory.textContent = post.category;
         if (post.image) {
           modalImage.src = post.image;
-          modalImage.alt = post.title;
           modalImage.style.display = 'block';
         } else {
           modalImage.style.display = 'none';
         }
-        modalContent.textContent = post.content;
-        modalCategory.textContent = `Category: ${post.category}`;
         postModal.show();
       });
-      
       newsContainer.appendChild(card);
     });
   }
 
-  // Render the "Trending" section (using the first 3 posts as trending)
+  // Render the "Trending" section (using the first 3 posts as trending) with clickable items
   function renderTrendingNews(posts) {
     trendingContainer.innerHTML = '';
     const trendingPosts = posts.slice(0, 3);
@@ -89,22 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
       itemHTML += `<small>${post.category}</small>`;
       itemHTML += `</div>`;
       trendingItem.innerHTML = itemHTML;
-      
       // Make trending item clickable as well
-      trendingItem.addEventListener('click', () => {
+      trendingItem.addEventListener('click', function() {
         modalTitle.textContent = post.title;
+        modalContent.textContent = post.content;
+        modalCategory.textContent = post.category;
         if (post.image) {
           modalImage.src = post.image;
-          modalImage.alt = post.title;
           modalImage.style.display = 'block';
         } else {
           modalImage.style.display = 'none';
         }
-        modalContent.textContent = post.content;
-        modalCategory.textContent = `Category: ${post.category}`;
         postModal.show();
       });
-      
       trendingContainer.appendChild(trendingItem);
     });
   }

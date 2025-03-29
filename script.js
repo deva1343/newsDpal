@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cardHTML += `<small>${post.category}</small>`;
       cardHTML += `</div>`;
       card.innerHTML = cardHTML;
-      // Add click event to open modal with full post content
+      // Click event to open modal with full post content
       card.addEventListener('click', function() {
         modalTitle.textContent = post.title;
         modalContent.textContent = post.content;
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Render the "Trending" section (using the first 3 posts as trending) with clickable items
+  // Render the "Trending" section (first 3 posts as trending) with clickable items
   function renderTrendingNews(posts) {
     trendingContainer.innerHTML = '';
     const trendingPosts = posts.slice(0, 3);

@@ -8,7 +8,7 @@
   <!-- SEO Meta Tags -->
   <title>Professional News Portal - Breaking & Trending News</title>
   <meta name="description" content="Stay updated with the latest breaking news, trending stories, and in-depth analyses from around the world. Professional news portal featuring real-time updates, insightful commentary, and engaging articles." />
-  <meta name="keywords" content="latest news, breaking news, trending news, professional news portal, world news, technology news, startup ecosystem, global market trends, climate change challenges" />
+  <meta name="keywords" content="latest news, breaking news, trending news, professional news portal, world news, technology news, startup ecosystem, global market trends, climate change challenges, editor's picks, top stories" />
   <link rel="canonical" href="https://news.dpal.site" />
 
   <!-- Open Graph / Facebook -->
@@ -56,26 +56,36 @@
         </div>
       </nav>
     </div>
+    <!-- News Ticker -->
+    <div class="news-ticker bg-dark text-white py-2">
+      <div class="container">
+        <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();">
+          Latest Headlines: Breaking: Major tech breakthrough announced | Global market trends on the rise | Climate change challenges persist | Startup ecosystem booming in India | More headlines...
+        </marquee>
+      </div>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Breaking News</h1>
       <p>Your daily dose of breaking news and trending stories.</p>
+      <a href="#newsContainer" class="btn btn-primary">Read Latest News</a>
     </div>
   </section>
 
   <!-- Main Content -->
   <main class="container">
-    <section class="latest-news">
+    <section class="latest-news my-5">
       <h2>Latest News</h2>
       <div id="newsContainer" class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         <!-- News cards will be inserted here dynamically -->
       </div>
     </section>
 
-    <section class="trending-news">
+    <section class="trending-news my-5">
       <h2>Trending</h2>
       <div id="trendingContainer" class="trending-list">
         <!-- Trending news will be inserted here dynamically -->
@@ -103,8 +113,8 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 NewsPortal. All rights reserved.</p>
+  <footer class="mt-5">
+    <p class="text-center py-3 mb-0">&copy; 2025 NewsPortal. All rights reserved.</p>
   </footer>
 
   <!-- Bootstrap Bundle with Popper -->

@@ -1,0 +1,165 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #0066cc, #00ccff);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li {
+  margin: 0 10px;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Dark Mode Toggle */
+#darkModeToggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 70px; /* Adjust for fixed navbar */
+  padding: 20px;
+}
+main {
+  flex: 0 0 80%;
+  padding-right: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.ad-section {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+/* Google Ad Styles */
+.google-ad {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Post Card Styles */
+.post {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+.post h2 {
+  margin-top: 0;
+}
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spinner Styles */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top-color: #0066cc;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin: 50px auto;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .navbar {
+  background: linear-gradient(90deg, #333, #555);
+}
+body.dark-mode .post {
+  background: #1e1e1e;
+  border-color: #444;
+}
+body.dark-mode .google-ad {
+  background: #1e1e1e;
+  border-color: #444;
+}
+
+/* Mobile-First Adjustments */
+@media (max-width: 600px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+  .navbar ul li {
+    margin: 10px 0;
+  }
+  .content-wrapper {
+    flex-direction: column;
+  }
+  main,
+  .ad-section {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+  }
+}

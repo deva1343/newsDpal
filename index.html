@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic News Portal</title>
+  <meta name="description" content="Stay updated with the latest news. Dynamic content, responsive design and interactive features." />
+  <meta name="keywords" content="news, dynamic, responsive, SEO, mobile-first" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <!-- Attractive, Animated Navbar -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="#" data-category="all" class="active">All</a></li>
+        <li><a href="#" data-category="india">India</a></li>
+        <li><a href="#" data-category="world">World</a></li>
+        <li><a href="#" data-category="market">Market</a></li>
+        <li><a href="#" data-category="economics">Economics</a></li>
+        <li><a href="#" data-category="tech">Tech</a></li>
+      </ul>
+      <button id="darkModeToggle">🌙</button>
+    </nav>
+  </header>
+  
+  <!-- Content Wrapper with Main and Ad Section -->
+  <div class="content-wrapper">
+    <main>
+      <!-- Loading Spinner -->
+      <div id="loading" class="spinner"></div>
+      <div id="postsContainer">
+        <!-- Posts will load here dynamically -->
+      </div>
+    </main>
+    <aside class="ad-section">
+      <div class="google-ad">
+        <!-- Replace with actual Google Ad code -->
+        <p>Google Ad Space</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

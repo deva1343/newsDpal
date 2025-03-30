@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const newsContainer = document.getElementById('newsContainer');
   const trendingContainer = document.getElementById('trendingContainer');
-  const breakingNewsContainer = document.getElementById('breakingNewsContainer');
-  const topStoriesContainer = document.querySelector('.top-stories-list');
+  const breakingNewsContainer = document.getElementById('breakingNewsContainer'); // Left Side
+  const topStoriesContainer = document.getElementById('topStoriesContainer'); // Right Side
   const navLinks = document.querySelectorAll('.navbar a');
 
   function fetchNews(category = 'all') {
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         renderLatestNews(posts);
         renderTrendingNews(posts);
-        renderBreakingNews(posts);
-        renderTopStories(posts);
+        renderBreakingNews(posts); // Left side
+        renderTopStories(posts); // Right side
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderTopStories(posts) {
     topStoriesContainer.innerHTML = '';
-    const topStories = posts.slice(0, 4); // Adjust number of top stories as needed
+    const topStories = posts.slice(0, 4); 
 
     topStories.forEach(post => {
       const item = document.createElement('div');

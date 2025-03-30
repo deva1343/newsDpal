@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const newsContainer = document.getElementById('newsContainer');
   const trendingContainer = document.getElementById('trendingContainer');
   const breakingNewsContainer = document.getElementById('breakingNewsContainer');
+  const topStoriesContainer = document.querySelector('.top-stories-list');
   const navLinks = document.querySelectorAll('.navbar a');
 
   function fetchNews(category = 'all') {
@@ -15,10 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
         renderLatestNews(posts);
         renderTrendingNews(posts);
         renderBreakingNews(posts);
+        renderTopStories(posts);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
         newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
+        topStoriesContainer.innerHTML = '<p>Error loading top stories.</p>';
       });
   }
 
@@ -82,6 +85,19 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
       item.addEventListener('click', () => openPost(post.slug));
       breakingNewsContainer.appendChild(item);
+    });
+  }
+
+  function renderTopStories(posts) {
+    topStoriesContainer.innerHTML = '';
+    const topStories = posts.slice(0, 4); // Adjust number of top stories as needed
+
+    topStories.forEach(post => {
+      const item = document.createElement('div');
+      item.className = 'top-stories-item';
+      item.innerText = post.title;
+      item.addEventListener('click', () => openPost(post.slug));
+      topStoriesContainer.appendChild(item);
     });
   }
 

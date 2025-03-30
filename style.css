@@ -1,4 +1,4 @@
-/* Reset defaults */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,95 +6,63 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
-/* ================= HEADER ================= */
 header {
-  background: #222;
+  background-color: #333;
   color: #fff;
 }
 
 .header-top {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-/* ================= NAVBAR ================= */
 .navbar {
-  overflow-x: auto;
+  display: flex;
 }
 
 .navbar-nav {
   display: flex;
-  flex-direction: row;
   gap: 15px;
-  white-space: nowrap;
 }
 
-.navbar .nav-item {
-  flex: 0 0 auto;
-}
-
-.navbar .nav-link {
-  font-weight: 500;
-  padding: 10px 14px;
-  border-radius: 6px;
-  transition: background 0.3s, transform 0.2s;
+.navbar .nav-item .nav-link {
   color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-  background: #444;
-  transform: scale(1.05);
+.navbar .nav-item .nav-link.active {
+  color: #ff4500;
 }
 
-/* ================= HERO SECTION ================= */
+.navbar .nav-item .nav-link:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
 .hero {
   position: relative;
   background: url('https://picsum.photos/1200/400?random=2') center/cover no-repeat;
   height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-}
-
-.hero-content {
-  position: relative;
   color: #fff;
   text-align: center;
-  z-index: 1;
+  padding-top: 150px;
 }
 
 .hero-content h1 {
   font-size: 3rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .hero-content p {
@@ -103,204 +71,70 @@ header {
 }
 
 .hero-content .btn {
-  font-size: 1rem;
-  padding: 12px 24px;
-  border-radius: 30px;
-  transition: background 0.3s, transform 0.3s;
-  background: #ff4500;
-  color: white;
-  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .hero-content .btn:hover {
-  transform: scale(1.1);
-  background: #ff5722;
+  background-color: #ff5722;
 }
 
-/* ================= MAIN CONTENT ================= */
-main {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-/* ================= NEWS CONTAINER ================= */
-.news-container {
+/* Breaking and Top Stories Section Layout */
+.breaking-top-stories {
   display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
   gap: 20px;
-  justify-content: space-between; /* Added to align the sections side by side */
 }
 
-/* ================= BREAKING NEWS (HORIZONTAL SLIDER) ================= */
-.breaking-news {
-  width: 50%; /* Set to 50% */
-  overflow: hidden;
-  position: relative;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-}
-
-.breaking-news h2 {
-  font-size: 1.4rem;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #222;
-  margin-bottom: 12px;
-}
-
-/* Horizontal scrolling effect */
-.breaking-news-list {
-  display: flex;
-  gap: 20px; /* Increased gap between news items */
-  width: 200%;
-  animation: slide-news 10s linear infinite;
-}
-
-@keyframes slide-news {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); } /* Scrolls left */
-}
-
-.breaking-news-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 20px; /* Added horizontal padding */
-  min-width: 270px; /* Increased width slightly */
-  border-radius: 6px;
-  transition: background 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.breaking-news-item:hover {
-  background: #f9f9f9;
-}
-
-.breaking-news-item img {
-  width: 70px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.breaking-news-content {
+.breaking-news, .top-stories {
   flex: 1;
-}
-
-.breaking-news-content h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  text-transform: capitalize;
-}
-
-.breaking-news-content p {
-  font-size: 0.85rem;
-  color: #555;
-  white-space: normal;
-}
-
-/* ================= TOP STORIES (VERTICAL SLIDER) ================= */
-.top-stories {
-  width: 50%; /* Set to 50% */
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   padding: 15px;
-  position: relative;
-  overflow: hidden;
-  max-height: 400px; /* Set a max-height to control the height of the container */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.top-stories h2 {
-  font-size: 1.4rem;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #222;
-  margin-bottom: 12px;
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-/* Vertical scrolling effect */
-.top-stories-list {
+/* Carousel */
+.carousel-inner {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%; /* Set to 100% to fill the container */
-  overflow: hidden;
-  animation: rotate-top-stories 10s linear infinite;
-  gap: 20px; /* Added gap between the items */
+  justify-content: center;
 }
 
-@keyframes rotate-top-stories {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); }
+.carousel-inner .carousel-item {
+  width: 100%;
 }
 
-.top-stories-item {
+/* Top Stories List */
+.top-stories-list {
+  list-style: none;
+  padding: 0;
+}
+
+.top-stories-list .top-stories-item {
   font-size: 1rem;
-  font-weight: bold;
   padding: 12px 0;
-  margin-bottom: 10px; /* Added space between items */
-  color: #333;
-  text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .top-stories-item:hover {
   color: #ff4500;
 }
 
-/* ================= RESPONSIVE ADJUSTMENTS ================= */
-@media (max-width: 768px) {
-  .news-container {
-    flex-direction: column;
-  }
-
-  .breaking-news, .top-stories {
-    width: 100%;
-  }
-
-  .breaking-news-list {
-    width: 100%;
-    animation: slide-news 15s linear infinite; /* Slower on mobile */
-  }
-
-  .top-stories-list {
-    height: auto; /* Allow it to adjust based on content */
-    animation: none; /* Disable auto animation for mobile */
-  }
-
-  .top-stories-item {
-    padding: 10px 0;
-    font-size: 0.9rem;
-    margin-bottom: 12px; /* Add more margin on mobile */
-  }
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
 }
 
-@media (max-width: 480px) {
-  .header-top {
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-  }
-
-  .breaking-news-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .breaking-news-item img {
-    width: 100%;
-    height: auto;
-  }
-
-  .breaking-news-content p {
-    max-width: 100%;
-    white-space: normal;
-  }
+footer p {
+  margin: 0;
 }

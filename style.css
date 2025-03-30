@@ -34,7 +34,6 @@ header {
 }
 
 /* ================= NAVBAR ================= */
-/* Ensures navbar remains horizontal on all devices */
 .navbar {
   overflow-x: auto;
 }
@@ -126,7 +125,6 @@ main {
 }
 
 /* ================= NEWS CONTAINER ================= */
-/* Breaking News on the left | Top Stories on the right */
 .news-container {
   display: flex;
   max-width: 1200px;
@@ -155,7 +153,7 @@ main {
 /* Horizontal scrolling effect */
 .breaking-news-list {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Increased gap between news items */
   width: 200%;
   animation: slide-news 10s linear infinite;
 }
@@ -169,11 +167,11 @@ main {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px;
+  padding: 10px 20px; /* Added horizontal padding */
+  min-width: 270px; /* Increased width slightly */
   border-radius: 6px;
   transition: background 0.3s ease-in-out;
   cursor: pointer;
-  min-width: 250px; /* Ensures smooth horizontal scrolling */
 }
 
 .breaking-news-item:hover {
@@ -234,13 +232,14 @@ main {
 
 @keyframes rotate-top-stories {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); } /* Moves up like live commentary */
+  100% { transform: translateY(-100%); } /* Moves up */
 }
 
 .top-stories-item {
   font-size: 1rem;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 12px 0;
+  margin-bottom: 10px; /* Added space between items */
   color: #333;
   text-transform: uppercase;
   cursor: pointer;

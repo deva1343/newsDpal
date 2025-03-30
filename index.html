@@ -1,94 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>FuturaNews - Breaking & Trending News</title>
-  <meta name="description" content="Stay updated with breaking news, trending stories, and in-depth analyses from around the world.">
-  <meta name="keywords" content="latest news, breaking news, world news, tech news, business, trending news">
-  <link rel="canonical" href="https://news.dpal.site">
-
-  <!-- Open Graph (Facebook) -->
-  <meta property="og:title" content="FuturaNews - Breaking & Trending News">
-  <meta property="og:description" content="Stay updated with the latest breaking news and trending stories.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://picsum.photos/1200/400?random=1">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FuturaNews - Breaking & Trending News">
-  <meta name="twitter:description" content="Breaking news, trending stories, and in-depth analyses.">
-  <meta name="twitter:image" content="https://picsum.photos/1200/400?random=1">
-
-  <!-- Bootstrap & Styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="header-top">
-      <div class="logo">FuturaNews</div>
-      <nav class="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="india">India</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="world">World</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="tech">Tech</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="economy">Economy</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Breaking News Ticker -->
-  <section class="breaking-news">
-    <h2>Breaking News</h2>
-    <marquee behavior="scroll" direction="left">
-      🚨 Market hits record high... 🔥 Tech giants unveil new AI innovations... 🌍 Global warming effects worsen... ⚽ Champions League updates... 💰 Crypto crashes...
-    </marquee>
-  </section>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Stay Informed, Stay Ahead</h1>
-      <p>Breaking news, trending stories, and expert analysis, all in one place.</p>
-      <a href="#" class="btn">Read More</a>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <main>
-    <section class="latest-news">
-      <h2>Latest News</h2>
-      <div id="newsContainer" class="news-grid"></div>
-    </section>
-    
-    <section class="trending-news">
-      <h2>Trending Now</h2>
-      <div class="trending-list">
-        <div class="trending-item">
-          <img src="https://picsum.photos/85/65?random=1" alt="Trending">
-          <div class="trending-item-content">
-            <h4>AI Breakthroughs in 2025</h4>
-            <small>5 mins ago</small>
-          </div>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="logo">NewsHub</div>
+            <nav class="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">World</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Technology</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sports</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Entertainment</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Health</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
+
+        <!-- News Ticker -->
+        <div class="news-ticker">
+            <marquee behavior="scroll" direction="left">Breaking News: Latest updates on global events! | Tech industry sees major innovations! | Sports championships reach intense finals!</marquee>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Stay Updated with the Latest News</h1>
+            <p>Get real-time updates from around the world.</p>
+            <a href="#" class="btn">Explore Now</a>
+        </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 FuturaNews. All rights reserved.</p>
-  </footer>
+    <!-- Main Content -->
+    <main>
+        <!-- Latest News Section -->
+        <section class="latest-news">
+            <h2>Latest News</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://picsum.photos/300/200?random=1" alt="News Image">
+                    <div class="news-card-content">
+                        <h3>Global Economic Growth</h3>
+                        <p>World leaders discuss economic strategies for sustainable growth.</p>
+                        <small>Published 2 hours ago</small>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="News Image">
+                    <div class="news-card-content">
+                        <h3>Tech Innovations 2025</h3>
+                        <p>New AI-powered devices changing the industry landscape.</p>
+                        <small>Published 3 hours ago</small>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="News Image">
+                    <div class="news-card-content">
+                        <h3>Sports Championship Finals</h3>
+                        <p>Exciting finals as teams battle for the ultimate trophy.</p>
+                        <small>Published 4 hours ago</small>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
+        <!-- Trending News Section -->
+        <section class="trending-news">
+            <h2>Trending Now</h2>
+            <div class="trending-list">
+                <div class="trending-item">
+                    <img src="https://picsum.photos/100/80?random=4" alt="Trending News">
+                    <div class="trending-item-content">
+                        <h4>New Space Discoveries</h4>
+                        <small>Published 1 day ago</small>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <img src="https://picsum.photos/100/80?random=5" alt="Trending News">
+                    <div class="trending-item-content">
+                        <h4>Stock Market Surges</h4>
+                        <small>Published 3 hours ago</small>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <img src="https://picsum.photos/100/80?random=6" alt="Trending News">
+                    <div class="trending-item-content">
+                        <h4>Hollywood's Newest Blockbuster</h4>
+                        <small>Published 6 hours ago</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breaking News Section -->
+        <section class="breaking-news">
+            <h2>Breaking News</h2>
+            <div class="breaking-news-list">
+                <div class="breaking-news-item">
+                    <img src="https://picsum.photos/100/80?random=7" alt="Breaking News">
+                    <div class="breaking-news-content">
+                        <h3>Government Announces New Policies</h3>
+                        <p>Significant changes introduced to boost economic stability.</p>
+                    </div>
+                </div>
+                <div class="breaking-news-item">
+                    <img src="https://picsum.photos/100/80?random=8" alt="Breaking News">
+                    <div class="breaking-news-content">
+                        <h3>Record-Breaking Sports Performance</h3>
+                        <p>Athlete sets a new world record in the championship finals.</p>
+                    </div>
+                </div>
+                <div class="breaking-news-item">
+                    <img src="https://picsum.photos/100/80?random=9" alt="Breaking News">
+                    <div class="breaking-news-content">
+                        <h3>Medical Breakthrough in Cancer Treatment</h3>
+                        <p>Researchers discover a new technique for early cancer detection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 NewsHub | All Rights Reserved</p>
+    </footer>
 
 </body>
 </html>

@@ -24,17 +24,25 @@
 
   /* Fonts & Typography */
   --font-family-base: 'Roboto', sans-serif;
+  /* Alternatively, you can swap to 'Inter', sans-serif if preferred */
   --line-height-base: 1.6;
 
   /* Spacing */
   --container-padding: 20px;
   --section-margin: 40px;
-  --grid-gap: 30px;  /* Increased grid gap for posts */
+  --grid-gap: 30px;  /* Increased gap for posts grid */
 }
 
 /* ==========================================================================
    Global Reset & Base Styling
    ========================================================================== */
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+}
+
 *,
 *::before,
 *::after {
@@ -49,8 +57,6 @@ html {
 
 body {
   font-family: var(--font-family-base);
-  background: var(--light-bg);
-  color: var(--text-color);
   line-height: var(--line-height-base);
 }
 
@@ -127,7 +133,8 @@ body {
 /* ==========================================================================
    Adaptive Navigation (Desktop & Mobile)
    ========================================================================== */
-/* --- Desktop Nav --- */
+
+/* Header & Top Bar */
 header {
   background: var(--primary-color);
   color: #ffffff;
@@ -198,7 +205,7 @@ header {
 
 .navbar-nav {
   display: flex;
-  flex-wrap: nowrap; /* Initially keep side by side */
+  flex-wrap: nowrap; /* Side by side on larger screens */
   gap: 15px;
   padding: 0;
 }
@@ -245,7 +252,7 @@ header {
   max-width: 1200px;
   margin: var(--section-margin) auto;
   display: flex;
-  flex-wrap: nowrap; /* Side by side on larger screens */
+  flex-wrap: nowrap; /* Keep side by side on larger screens */
   gap: 20px;
   padding: 0 var(--container-padding);
 }
@@ -304,6 +311,7 @@ header {
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--section-margin);
 }
 
 .post-card:hover {
@@ -544,13 +552,13 @@ header {
   .nav-toggle-label {
     display: block;
   }
-  /* Hide the regular navbar-nav by default */
+  /* Hide regular navbar-nav by default */
   .navbar-nav {
     display: none;
     flex-direction: column;
     width: 100%;
   }
-  /* When toggle is checked, show nav menu */
+  /* When toggle is checked, display the nav menu */
   .nav-toggle:checked ~ .navbar-nav {
     display: flex;
   }
@@ -571,6 +579,11 @@ header {
   
   .post-excerpt {
     -webkit-line-clamp: 3;
+  }
+  
+  /* Increase spacing for mobile posts */
+  .post-card {
+    margin-bottom: 30px;
   }
 }
 

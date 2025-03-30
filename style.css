@@ -20,14 +20,15 @@ header {
 .header-top {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .logo {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Navbar: Force horizontal layout on all devices */
@@ -35,9 +36,9 @@ header {
   overflow-x: auto;
 }
 .navbar-nav {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
   white-space: nowrap;
 }
 .navbar .nav-item {
@@ -45,19 +46,20 @@ header {
 }
 .navbar .nav-link {
   font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background 0.3s;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
   color: #fff;
 }
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   background: #444;
+  transform: scale(1.05);
 }
 
 /* News Ticker */
 .news-ticker {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 .news-ticker marquee {
   color: #fff;
@@ -66,7 +68,7 @@ header {
 /* Hero section with futuristic style */
 .hero {
   position: relative;
-  background: url('https://picsum.photos/1200/400?random=2') center center/cover no-repeat;
+  background: url('https://picsum.photos/1200/400?random=2') center/cover no-repeat;
   height: 400px;
   display: flex;
   align-items: center;
@@ -79,7 +81,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 }
 .hero-content {
   position: relative;
@@ -99,89 +101,98 @@ header {
 }
 .hero-content .btn {
   font-size: 1rem;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 30px;
   transition: background 0.3s, transform 0.3s;
+  background: #ff4500;
+  color: white;
+  font-weight: bold;
 }
 .hero-content .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  background: #ff5722;
 }
 
 /* Main Content */
 main {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 0 20px;
 }
 .latest-news h2,
 .trending-news h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  border-bottom: 2px solid #222;
+  border-bottom: 3px solid #222;
   padding-bottom: 5px;
 }
 
 /* News Grid & Card Styles */
 .news-grid .news-card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 .news-grid .news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .news-grid .news-card img {
   width: 100%;
   display: block;
+  height: auto;
 }
 .news-card-content {
-  padding: 15px;
+  padding: 18px;
 }
 .news-card-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
   text-transform: uppercase;
+  color: #222;
 }
 .news-card-content p {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #555;
 }
 .news-card-content small {
   color: #777;
+  font-weight: bold;
 }
 
 /* Trending List Styles */
 .trending-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 .trending-item {
   background: #fff;
-  padding: 10px 15px;
-  border-radius: 6px;
+  padding: 12px 18px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: background 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, transform 0.2s;
   cursor: pointer;
 }
 .trending-item:hover {
-  background: #f0f0f0;
+  background: #f8f8f8;
+  transform: scale(1.02);
 }
 .trending-item img {
-  width: 80px;
-  height: 60px;
+  width: 85px;
+  height: 65px;
   object-fit: cover;
   margin-right: 15px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .trending-item-content h4 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
@@ -194,17 +205,25 @@ footer {
   background: #222;
   color: #fff;
   text-align: center;
-  padding: 15px 20px;
+  padding: 18px 20px;
   margin-top: 40px;
+  font-size: 0.95rem;
 }
 
 /* Responsive adjustments for tablets and larger phones */
 @media (max-width: 768px) {
+  .hero {
+    height: 320px;
+  }
   .hero-content h1 {
     font-size: 2.5rem;
   }
   .hero-content p {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+  .hero-content .btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
 }
 
@@ -213,29 +232,29 @@ footer {
   .header-top {
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 12px;
   }
   .logo {
     font-size: 1.6rem;
   }
   .hero {
-    height: 300px;
+    height: 280px;
   }
   .hero-content h1 {
     font-size: 2rem;
   }
   .hero-content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   main {
     padding: 0 10px;
   }
   .latest-news h2,
   .trending-news h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
   .news-card-content h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   .news-card-content p {
     font-size: 0.9rem;

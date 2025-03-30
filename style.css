@@ -1,3 +1,122 @@
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+header {
+  background: #222;
+  color: #fff;
+}
+
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  overflow-x: auto;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  white-space: nowrap;
+}
+
+.navbar .nav-item {
+  flex: 0 0 auto;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+  color: #fff;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  background: #444;
+  transform: scale(1.05);
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+  position: relative;
+  background: url('https://picsum.photos/1200/400?random=2') center/cover no-repeat;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+}
+
+.hero-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero-content .btn {
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  transition: background 0.3s, transform 0.3s;
+  background: #ff4500;
+  color: white;
+  font-weight: bold;
+}
+
+.hero-content .btn:hover {
+  transform: scale(1.1);
+  background: #ff5722;
+}
+
 /* ================= MAIN CONTENT ================= */
 main {
   max-width: 1200px;
@@ -8,14 +127,14 @@ main {
 /* ================= NEWS CONTAINER ================= */
 .news-container {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping of elements to new rows */
+  max-width: 1200px;
+  margin: 20px auto;
   gap: 20px;
-  justify-content: space-between;
 }
 
 /* ================= BREAKING NEWS (HORIZONTAL SLIDER) ================= */
 .breaking-news {
-  width: 65%; /* Adjusted width to prevent overflow */
+  width: 50%;
   overflow: hidden;
   position: relative;
   background: #fff;
@@ -34,22 +153,22 @@ main {
 /* Horizontal scrolling effect */
 .breaking-news-list {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Increased gap between news items */
   width: 200%;
   animation: slide-news 10s linear infinite;
 }
 
 @keyframes slide-news {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-100%); } /* Scrolls left */
 }
 
 .breaking-news-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 20px;
-  min-width: 270px;
+  padding: 10px 20px; /* Added horizontal padding */
+  min-width: 270px; /* Increased width slightly */
   border-radius: 6px;
   transition: background 0.3s ease-in-out;
   cursor: pointer;
@@ -92,6 +211,7 @@ main {
   padding: 15px;
   position: relative;
   overflow: hidden;
+  max-height: 400px; /* Set a max-height to control the height of the container */
 }
 
 .top-stories h2 {
@@ -106,9 +226,10 @@ main {
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 150px;
+  height: 100%; /* Set to 100% to fill the container */
   overflow: hidden;
   animation: rotate-top-stories 10s linear infinite;
+  gap: 20px; /* Added gap between the items */
 }
 
 @keyframes rotate-top-stories {
@@ -120,11 +241,13 @@ main {
   font-size: 1rem;
   font-weight: bold;
   padding: 12px 0;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Added space between items */
   color: #333;
   text-transform: uppercase;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .top-stories-item:hover {
@@ -134,7 +257,7 @@ main {
 /* ================= RESPONSIVE ADJUSTMENTS ================= */
 @media (max-width: 768px) {
   .news-container {
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
   }
 
   .breaking-news, .top-stories {
@@ -143,17 +266,18 @@ main {
 
   .breaking-news-list {
     width: 100%;
-    animation: slide-news 15s linear infinite; /* Slower animation on mobile */
+    animation: slide-news 15s linear infinite; /* Slower on mobile */
   }
 
   .top-stories-list {
-    height: auto;
-    animation: none; /* Disable animation on mobile */
+    height: auto; /* Allow it to adjust based on content */
+    animation: none; /* Disable auto animation for mobile */
   }
 
   .top-stories-item {
-    padding: 8px 0;
+    padding: 10px 0;
     font-size: 0.9rem;
+    margin-bottom: 12px; /* Add more margin on mobile */
   }
 }
 

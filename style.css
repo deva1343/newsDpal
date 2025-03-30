@@ -28,7 +28,8 @@
 
   /* Spacing */
   --container-padding: 20px;
-  --section-margin: 30px;
+  --section-margin: 40px;
+  --grid-gap: 30px;  /* Increased grid gap for posts */
 }
 
 /* ==========================================================================
@@ -291,7 +292,7 @@ header {
   margin: var(--section-margin) auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: var(--grid-gap);
   padding: 0 var(--container-padding);
 }
 
@@ -569,7 +570,7 @@ header {
   }
   
   .post-excerpt {
-    -webkit-line-clamp: 3; /* Fewer lines on small screens */
+    -webkit-line-clamp: 3;
   }
 }
 

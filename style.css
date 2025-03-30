@@ -158,8 +158,8 @@ main {
 
 .news-card img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: auto;  /* Removed fixed height to preserve aspect ratio */
+  object-fit: cover;  /* Ensures image fits neatly within the container */
 }
 
 .news-card-content {

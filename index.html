@@ -44,19 +44,36 @@
     </div>
   </header>
 
-  <!-- Breaking News Section -->
-  <section class="breaking-news container mt-4">
-    <h2 class="text-center">Breaking News</h2>
-    <div id="breakingNewsCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" id="breakingNewsContainer">
-        <!-- Breaking news items will be inserted dynamically here -->
+  <!-- Breaking News and Top Stories Section -->
+  <section class="breaking-top-stories container mt-4">
+    <div class="row">
+      <!-- LEFT COLUMN: Breaking News -->
+      <div class="col-lg-6">
+        <section class="breaking-news">
+          <h2 class="text-center">Breaking News</h2>
+          <div id="breakingNewsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="breakingNewsContainer">
+              <!-- Breaking news items will be inserted dynamically here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </section>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
+
+      <!-- RIGHT COLUMN: Top Stories -->
+      <div class="col-lg-6">
+        <section class="top-stories">
+          <h2 class="text-center">Top Stories</h2>
+          <div id="topStoriesContainer" class="top-stories-list">
+            <!-- Top stories will be inserted dynamically here -->
+          </div>
+        </section>
+      </div>
     </div>
   </section>
 

@@ -1,99 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FuturaNews Portal - Breaking & Trending News</title>
-  <meta name="description" content="Stay updated with the latest breaking news, trending stories, and in-depth analyses from around the world." />
-  <meta name="keywords" content="latest news, breaking news, trending news, professional news portal, world news, technology news, startup ecosystem, global market trends, climate change challenges, futuristic news" />
-  <link rel="canonical" href="https://news.dpal.site" />
+  <title>FuturaNews - Breaking & Trending News</title>
+  <meta name="description" content="Stay updated with breaking news, trending stories, and in-depth analyses from around the world.">
+  <meta name="keywords" content="latest news, breaking news, world news, tech news, business, trending news">
+  <link rel="canonical" href="https://news.dpal.site">
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="FuturaNews Portal - Breaking & Trending News" />
-  <meta property="og:description" content="Stay updated with the latest breaking news, trending stories, and in-depth analyses from around the world." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://news.dpal.site" />
-  <meta property="og:image" content="https://picsum.photos/1200/400?random=1" />
+  <!-- Open Graph (Facebook) -->
+  <meta property="og:title" content="FuturaNews - Breaking & Trending News">
+  <meta property="og:description" content="Stay updated with the latest breaking news and trending stories.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://picsum.photos/1200/400?random=1">
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FuturaNews Portal - Breaking & Trending News" />
-  <meta name="twitter:description" content="Stay updated with the latest breaking news, trending stories, and in-depth analyses from around the world." />
-  <meta name="twitter:image" content="https://picsum.photos/1200/400?random=1" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FuturaNews - Breaking & Trending News">
+  <meta name="twitter:description" content="Breaking news, trending stories, and in-depth analyses.">
+  <meta name="twitter:image" content="https://picsum.photos/1200/400?random=1">
 
   <!-- Bootstrap & Styles -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <div class="header-top container">
-      <div class="logo">FuturaNews</div>
-      <nav class="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#" data-category="all">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="india">India</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="world">World</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="tech">Tech</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-category="economics">Economics</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="container d-flex justify-content-between align-items-center py-3">
+    <div class="logo">FuturaNews</div>
+    <nav>
+      <ul class="nav">
+        <li><a class="nav-link active" href="#">Home</a></li>
+        <li><a class="nav-link" href="#" data-category="india">India</a></li>
+        <li><a class="nav-link" href="#" data-category="world">World</a></li>
+        <li><a class="nav-link" href="#" data-category="tech">Tech</a></li>
+        <li><a class="nav-link" href="#" data-category="economics">Economy</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Breaking News Section -->
+  <!-- Breaking News -->
   <section class="breaking-news container mt-4">
     <h2 class="text-center">Breaking News</h2>
     <div id="breakingNewsCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" id="breakingNewsContainer">
-        <!-- Breaking news items will be inserted dynamically here -->
-      </div>
+      <div class="carousel-inner" id="breakingNewsContainer"></div>
       <button class="carousel-control-prev" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon"></span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#breakingNewsCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon"></span>
       </button>
     </div>
   </section>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero text-center text-white py-5">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Stay Ahead with FuturaNews</h1>
-      <p>Your trusted source for breaking news, technology trends, and world affairs.</p>
-      <a href="#" class="btn">Explore More</a>
+      <p>Breaking news, tech trends, and global updates.</p>
+      <a href="#" class="btn btn-light">Explore More</a>
     </div>
   </section>
 
   <!-- Main Content -->
   <main class="container my-5">
-    <section class="latest-news">
+    <section>
       <h2>Latest News</h2>
-      <div id="newsContainer" class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        <!-- News cards will be inserted here dynamically -->
-      </div>
+      <div id="newsContainer" class="row g-4"></div>
     </section>
 
-    <section class="trending-news my-5">
-      <h2>Trending</h2>
-      <div id="trendingContainer" class="trending-list">
-        <!-- Trending news will be inserted here dynamically -->
-      </div>
+    <section class="mt-5">
+      <h2>Trending Now</h2>
+      <ul id="trendingContainer" class="list-group"></ul>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="mt-5">
-    <p class="text-center py-3 mb-0">&copy; 2025 FuturaNews. All rights reserved.</p>
+  <footer class="text-center py-3 mt-5 bg-dark text-light">
+    <p>&copy; 2025 FuturaNews. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 
 </body>

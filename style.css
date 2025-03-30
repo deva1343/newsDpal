@@ -1,68 +1,3 @@
-/* Reset defaults */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* ================= HEADER ================= */
-header {
-  background: #222;
-  color: #fff;
-}
-
-.header-top {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-/* ================= NAVBAR ================= */
-.navbar {
-  overflow-x: auto;
-}
-
-.navbar-nav {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  white-space: nowrap;
-}
-
-.navbar .nav-item {
-  flex: 0 0 auto;
-}
-
-.navbar .nav-link {
-  font-weight: 500;
-  padding: 10px 14px;
-  border-radius: 6px;
-  transition: background 0.3s, transform 0.2s;
-  color: #fff;
-}
-
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-  background: #444;
-  transform: scale(1.05);
-}
-
 /* ================= MAIN CONTENT ================= */
 main {
   max-width: 1200px;
@@ -70,17 +5,19 @@ main {
   padding: 0 20px;
 }
 
-/* ================= NEWS CONTAINER (Flex for Left & Right) ================= */
+/* ================= NEWS CONTAINER ================= */
 .news-container {
   display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
+  flex-wrap: wrap; /* Allows wrapping of elements to new rows */
   gap: 20px;
+  justify-content: space-between;
 }
 
-/* ================= LEFT: BREAKING NEWS ================= */
+/* ================= BREAKING NEWS (HORIZONTAL SLIDER) ================= */
 .breaking-news {
-  width: 70%; /* Left side takes 70% */
+  width: 65%; /* Adjusted width to prevent overflow */
+  overflow: hidden;
+  position: relative;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -94,18 +31,25 @@ main {
   margin-bottom: 12px;
 }
 
-/* Breaking News List */
+/* Horizontal scrolling effect */
 .breaking-news-list {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 20px;
+  width: 200%;
+  animation: slide-news 10s linear infinite;
+}
+
+@keyframes slide-news {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 .breaking-news-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px;
+  padding: 10px 20px;
+  min-width: 270px;
   border-radius: 6px;
   transition: background 0.3s ease-in-out;
   cursor: pointer;
@@ -116,8 +60,8 @@ main {
 }
 
 .breaking-news-item img {
-  width: 100px;
-  height: 70px;
+  width: 70px;
+  height: 55px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -130,6 +74,7 @@ main {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 4px;
+  text-transform: capitalize;
 }
 
 .breaking-news-content p {
@@ -138,13 +83,15 @@ main {
   white-space: normal;
 }
 
-/* ================= RIGHT: TOP STORIES ================= */
+/* ================= TOP STORIES (VERTICAL SLIDER) ================= */
 .top-stories {
-  width: 30%; /* Right side takes 30% */
+  width: 30%; /* Adjusted width for better fit */
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  position: relative;
+  overflow: hidden;
 }
 
 .top-stories h2 {
@@ -154,18 +101,28 @@ main {
   margin-bottom: 12px;
 }
 
-/* Top Stories List */
+/* Vertical scrolling effect */
 .top-stories-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  animation: rotate-top-stories 10s linear infinite;
+}
+
+@keyframes rotate-top-stories {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
 }
 
 .top-stories-item {
   font-size: 1rem;
   font-weight: bold;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  margin-bottom: 10px;
+  color: #333;
+  text-transform: uppercase;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
@@ -177,11 +134,26 @@ main {
 /* ================= RESPONSIVE ADJUSTMENTS ================= */
 @media (max-width: 768px) {
   .news-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack items vertically */
   }
 
   .breaking-news, .top-stories {
     width: 100%;
+  }
+
+  .breaking-news-list {
+    width: 100%;
+    animation: slide-news 15s linear infinite; /* Slower animation on mobile */
+  }
+
+  .top-stories-list {
+    height: auto;
+    animation: none; /* Disable animation on mobile */
+  }
+
+  .top-stories-item {
+    padding: 8px 0;
+    font-size: 0.9rem;
   }
 }
 

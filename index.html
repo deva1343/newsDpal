@@ -72,19 +72,37 @@
 
   <!-- Main Content -->
   <main class="container my-5">
-    <section class="latest-news">
-      <h2>Latest News</h2>
-      <div id="newsContainer" class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-        <!-- News cards will be inserted here dynamically -->
-      </div>
-    </section>
+    <div class="row">
+      <!-- LEFT COLUMN: LATEST NEWS -->
+      <div class="col-lg-8">
+        <section class="latest-news">
+          <h2>Latest News</h2>
+          <div id="newsContainer" class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
+            <!-- News cards will be inserted here dynamically -->
+          </div>
+        </section>
 
-    <section class="trending-news my-5">
-      <h2>Trending</h2>
-      <div id="trendingContainer" class="trending-list">
-        <!-- Trending news will be inserted here dynamically -->
+        <section class="trending-news my-5">
+          <h2>Trending</h2>
+          <div id="trendingContainer" class="trending-list">
+            <!-- Trending news will be inserted here dynamically -->
+          </div>
+        </section>
       </div>
-    </section>
+
+      <!-- RIGHT COLUMN: TOP STORIES -->
+      <div class="col-lg-4">
+        <section class="top-stories">
+          <h2>Top Stories</h2>
+          <div class="top-stories-list">
+            <div class="top-stories-item">Global Markets Surge Amidst Recovery</div>
+            <div class="top-stories-item">New Space Mission Breaks Records</div>
+            <div class="top-stories-item">Major Data Breach Exposes Millions</div>
+            <div class="top-stories-item">Sports Finals: Who Will Take the Title?</div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->

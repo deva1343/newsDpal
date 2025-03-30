@@ -3,6 +3,46 @@
 
 
     {
+  "category": "Tech",
+  "slug": "hyundai-ioniq-5-security-vulnerability-legal-action",
+  "title": "Hyundai Faces Legal Action Over Vulnerable Ioniq 5 Security",
+  "description": "Hyundai's Ioniq 5 electric vehicle is under scrutiny as security flaws allow theft in under 20 seconds, prompting legal action and raising concerns over automotive cybersecurity.",
+  "content": "<p><strong>Hyundai's Ioniq 5 Under Fire for Security Flaws</strong></p>
+  <p>Hyundai is facing legal action following allegations that its Ioniq 5 electric vehicle can be stolen in under 20 seconds using devices that mimic the car's electronic key. Digital security expert Elliott Ingram, whose Ioniq 5 was stolen and later recovered, accuses Hyundai of failing to inform customers about these vulnerabilities, thereby breaching the Consumer Rights Act. He seeks compensation and demands that Hyundai urgently alert customers to the risks and preventive measures. :contentReference[oaicite:0]{index=0}</p>
+  <br><br>
+  <p><strong>Industry-Wide Challenges in Vehicle Security</strong></p>
+  <p>Hyundai acknowledges an industry-wide issue with electronic devices used by organized crime groups to steal vehicles. The company claims efforts to enhance vehicle security and updates to mitigate the risk are underway, though a comprehensive recall is not planned. :contentReference[oaicite:1]{index=1}</p>
+  <br><br>
+  <p><strong>Surge in Car Thefts Raises Alarm</strong></p>
+  <p>Car thefts in England and Wales have surged by 84% over the past decade, with remote devices involved in 40% of recent thefts. Legislative measures against such devices are under consideration to curb thefts and organized crime in the automotive sector. :contentReference[oaicite:2]{index=2}</p>
+  <br><br>
+  <p><strong>Conclusion</strong></p>
+  <p>The legal action against Hyundai underscores the urgent need for automotive manufacturers to address cybersecurity vulnerabilities in modern vehicles. As technology advances, ensuring robust security measures is paramount to protect consumers and maintain trust in the automotive industry.</p>",
+  "keywords": ["Hyundai Ioniq 5 security", "car theft vulnerabilities", "automotive cybersecurity", "Hyundai legal action", "vehicle security flaws"],
+  "image": "https://picsum.photos/600/400?random=12"
+}
+,{
+  "category": "India",
+  "slug": "india-court-denies-jsw-steel-trafigura-met-coke-imports",
+  "title": "India Court Denies JSW Steel and Trafigura's Request to Clear Met Coke Imports",
+  "description": "An Indian court has rejected JSW Steel and Trafigura's plea to clear $90 million worth of metallurgical coke imports, upholding new import restrictions aimed at supporting local suppliers.",
+  "content": "<p><strong>Indian Court Upholds Import Restrictions on Metallurgical Coke</strong></p>
+  <p>An Indian court has denied JSW Steel and Trafigura’s requests to clear shipments of low-ash metallurgical coke (met coke) worth $90 million, amidst New Delhi's new import restrictions. The January policy imposes country-specific quotas on met coke imports to support local suppliers, unsettling major steel companies like ArcelorMittal Nippon India. :contentReference[oaicite:3]{index=3}</p>
+  <br><br>
+  <p><strong>Impact on the Steel Industry</strong></p>
+  <p>These companies argue that the local met coke quality is inadequate and that these restrictions negatively impact their operations. Despite JSW’s argument about the timing of their orders, the Delhi High Court supported the government’s stance, suggesting that allowing the imports would undermine the policy's goal. :contentReference[oaicite:4]{index=4}</p>
+  <br><br>
+  <p><strong>Production and Expansion Concerns</strong></p>
+  <p>The policy caps total met coke imports at 1.4 million metric tons from January to June, significantly affecting the steel industry in India, the world's second-largest crude steel producer. ArcelorMittal Nippon India has raised concerns about potential severe cutbacks in steel production and the delay of expansion plans due to these restrictions. Their case regarding met coke import clearances awaits a verdict. :contentReference[oaicite:5]{index=5}</p>
+  <br><br>
+  <p><strong>Conclusion</strong></p>
+  <p>The court's decision underscores the Indian government's commitment to supporting local industries through import restrictions. However, it also highlights the challenges faced by major steel producers in balancing quality requirements with policy compliance.</p>",
+  "keywords": ["JSW Steel met coke imports", "India import restrictions", "Delhi High Court met coke ruling", "steel industry impact", "ArcelorMittal Nippon India"],
+  "image": "https://picsum.photos/600/400?random=13"
+}
+,
+
+    {
   "category": "India",
   "slug": "india-renewable-energy-revolution-2025",
   "title": "India's Renewable Energy Revolution 2025: Harnessing Green Power for a Sustainable Future",

@@ -111,6 +111,13 @@ body {
 }
 
 /* ==========================================================================
+   Hide Hero Section
+   ========================================================================== */
+.hero {
+  display: none !important;
+}
+
+/* ==========================================================================
    Header & Navigation
    ========================================================================== */
 
@@ -141,13 +148,12 @@ header {
 /* Navbar Styles */
 .navbar {
   background: var(--primary-color);
-  /* Removed horizontal scrolling for a modern wrapped layout */
   padding: 10px 0;
 }
 
 .navbar-nav {
   display: flex;
-  flex-wrap: wrap;  /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;  /* Allow wrapping on small screens */
   gap: 15px;
   padding: 0 var(--container-padding);
 }
@@ -187,12 +193,13 @@ header {
 }
 
 /* ==========================================================================
-   Top News Section (50-50 Layout)
+   Top News Section (Breaking News & Top Stories)
    ========================================================================== */
 .top-news-container {
   max-width: 1200px;
   margin: var(--section-margin) auto;
   display: flex;
+  flex-wrap: nowrap; /* force side-by-side on larger screens */
   gap: 20px;
   padding: 0 var(--container-padding);
 }
@@ -229,6 +236,66 @@ header {
   font-size: 1rem;
   margin-bottom: 10px;
   color: var(--text-color);
+}
+
+/* ==========================================================================
+   Posts Grid Layout (Remaining Posts Arranged as Cards)
+   ========================================================================== */
+.posts-grid {
+  max-width: 1200px;
+  margin: var(--section-margin) auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0 var(--container-padding);
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-hover);
+}
+
+.post-card .img-container {
+  margin-bottom: 15px;
+}
+
+.post-card .post-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.post-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.post-card p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+.post-card .card-footer {
+  padding: 10px 15px;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 /* ==========================================================================
@@ -441,10 +508,10 @@ header {
   
   /* Ensure images in posts maintain aspect ratio */
   .img-container {
-    padding-bottom: 56.25%; /* 16:9 aspect ratio maintained */
+    padding-bottom: 56.25%;
   }
   
-  /* Adjust post clamping for mobile (3 lines instead of 4 if needed) */
+  /* Adjust post clamping for mobile */
   .post-excerpt {
     -webkit-line-clamp: 3;
   }

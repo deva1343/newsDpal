@@ -1,3 +1,4 @@
+/* ========== Base CSS ========== */
 /* Reset defaults */
 * {
   margin: 0;
@@ -133,7 +134,43 @@ main {
   padding: 0 20px;
 }
 
-/* 4×4 Grid Layout for News */
+/* ========== New Top News Container ========== */
+/* Container for Breaking News and Top Stories */
+.top-news-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.top-news-section {
+  background: #fff;
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-news-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.top-news-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ff4500;
+  padding-bottom: 5px;
+}
+
+.top-news-section p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* ========== 4×4 Grid Layout for News ========== */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -158,8 +195,8 @@ main {
 
 .news-card img {
   width: 100%;
-  height: auto;  /* Removed fixed height to preserve aspect ratio */
-  object-fit: cover;  /* Ensures image fits neatly within the container */
+  height: auto;
+  object-fit: cover;
 }
 
 .news-card-content {
@@ -184,26 +221,7 @@ main {
   font-weight: bold;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 1024px) {
-  .news-grid {
-    grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns */
-  }
-}
-
-@media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
-  }
-}
-
-@media (max-width: 480px) {
-  .news-grid {
-    grid-template-columns: repeat(1, 1fr); /* Single column for mobile */
-  }
-}
-
-/* Footer */
+/* ========== Footer ========== */
 footer {
   background: #222;
   color: #fff;
@@ -213,7 +231,7 @@ footer {
   font-size: 0.95rem;
 }
 
-/* Responsive Navbar */
+/* ========== Responsive Navbar ========== */
 @media (max-width: 768px) {
   .navbar {
     display: flex;
@@ -237,7 +255,7 @@ footer {
   }
 }
 
-/* Mobile Optimization */
+/* ========== Mobile Optimization ========== */
 @media (max-width: 768px) {
   .hero {
     height: 320px;
@@ -245,5 +263,29 @@ footer {
 
   .hero-content h1 {
     font-size: 2.5rem;
+  }
+  
+  /* Stack top news sections vertically on smaller screens */
+  .top-news-container {
+    flex-direction: column;
+  }
+}
+
+/* ========== Grid Responsiveness for News Cards ========== */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .news-grid {
+    grid-template-columns: 1fr;
   }
 }

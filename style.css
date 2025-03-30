@@ -130,11 +130,12 @@ main {
   max-width: 1200px;
   margin: 20px auto;
   gap: 20px;
+  justify-content: space-between; /* Added to align the sections side by side */
 }
 
 /* ================= BREAKING NEWS (HORIZONTAL SLIDER) ================= */
 .breaking-news {
-  width: 50%;
+  width: 50%; /* Set to 50% */
   overflow: hidden;
   position: relative;
   background: #fff;
@@ -204,7 +205,7 @@ main {
 
 /* ================= TOP STORIES (VERTICAL SLIDER) ================= */
 .top-stories {
-  width: 30%; /* Adjusted width for better fit */
+  width: 50%; /* Set to 50% */
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);

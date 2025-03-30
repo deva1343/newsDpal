@@ -1,5 +1,18 @@
-/* ========== Base CSS ========== */
-/* Reset defaults */
+/* ========== CSS Variables for Consistency ========== */
+:root {
+  --primary-color: #0d47a1;      /* Deep blue for headers, backgrounds */
+  --secondary-color: #1565c0;    /* Lighter blue for hover effects */
+  --accent-color: #d32f2f;       /* Accent red for borders and CTAs */
+  --text-color: #333;            /* Standard text color */
+  --light-bg: #f9f9f9;           /* Light background for content */
+  --card-bg: #ffffff;            /* Card background */
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --transition-speed: 0.3s;
+  --font-family: 'Roboto', sans-serif;
+}
+
+/* ========== Global Reset & Base ========== */
 * {
   margin: 0;
   padding: 0;
@@ -7,15 +20,15 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f4f4f4;
-  color: #333;
+  font-family: var(--font-family);
+  background: var(--light-bg);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-/* Header styles */
+/* ========== Header & Navbar ========== */
 header {
-  background: #222;
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -37,6 +50,7 @@ header {
 /* Navbar */
 .navbar {
   overflow-x: auto;
+  background: var(--primary-color);
 }
 
 .navbar-nav {
@@ -44,6 +58,7 @@ header {
   flex-direction: row;
   gap: 15px;
   white-space: nowrap;
+  padding: 10px 20px;
 }
 
 .navbar .nav-item {
@@ -54,26 +69,29 @@ header {
   font-weight: 500;
   padding: 10px 14px;
   border-radius: 6px;
-  transition: background 0.3s, transform 0.2s;
+  transition: background var(--transition-speed), transform 0.2s;
   color: #fff;
+  text-decoration: none;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  background: #444;
+  background: var(--secondary-color);
   transform: scale(1.05);
 }
 
 /* News Ticker */
 .news-ticker {
   font-size: 0.95rem;
+  background: var(--primary-color);
+  padding: 5px 20px;
 }
 
 .news-ticker marquee {
   color: #fff;
 }
 
-/* Hero section */
+/* ========== Hero Section ========== */
 .hero {
   position: relative;
   background: url('https://picsum.photos/1200/400?random=2') center/cover no-repeat;
@@ -90,7 +108,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(135deg, rgba(13, 71, 161, 0.8), rgba(21, 101, 192, 0.5));
 }
 
 .hero-content {
@@ -116,26 +134,26 @@ header {
   font-size: 1rem;
   padding: 12px 24px;
   border-radius: 30px;
-  transition: background 0.3s, transform 0.3s;
-  background: #ff4500;
-  color: white;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+  background: var(--accent-color);
+  color: #fff;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .hero-content .btn:hover {
   transform: scale(1.1);
-  background: #ff5722;
+  background: #b71c1c;
 }
 
-/* Main Content */
+/* ========== Main Content ========== */
 main {
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
 }
 
-/* ========== New Top News Container ========== */
-/* Container for Breaking News and Top Stories */
+/* ========== Top News Container (Breaking News & Top Stories) ========== */
 .top-news-container {
   display: flex;
   gap: 20px;
@@ -143,31 +161,31 @@ main {
 }
 
 .top-news-section {
-  background: #fff;
+  background: var(--card-bg);
   flex: 1;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .top-news-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 15px var(--shadow-hover);
 }
 
 .top-news-section h2 {
   font-size: 1.8rem;
   margin-bottom: 15px;
   text-transform: uppercase;
-  border-bottom: 2px solid #ff4500;
+  border-bottom: 2px solid var(--accent-color);
   padding-bottom: 5px;
 }
 
 .top-news-section p {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #555;
+  color: var(--text-color);
 }
 
 /* ========== 4×4 Grid Layout for News ========== */
@@ -180,17 +198,17 @@ main {
 
 /* News Card */
 .news-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px var(--shadow);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .news-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px var(--shadow-hover);
 }
 
 .news-card img {
@@ -207,7 +225,7 @@ main {
   font-size: 1.2rem;
   margin-bottom: 12px;
   text-transform: uppercase;
-  color: #222;
+  color: var(--primary-color);
 }
 
 .news-card-content p {
@@ -223,7 +241,7 @@ main {
 
 /* ========== Footer ========== */
 footer {
-  background: #222;
+  background: var(--primary-color);
   color: #fff;
   text-align: center;
   padding: 18px 20px;

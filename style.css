@@ -120,15 +120,12 @@ body {
 /* ==========================================================================
    Header & Navigation
    ========================================================================== */
-
-/* Header Base */
 header {
   background: var(--primary-color);
   color: #ffffff;
   padding: 10px var(--container-padding);
 }
 
-/* Header Top: Logo & Contact Info */
 .header-top {
   max-width: 1200px;
   margin: 0 auto;
@@ -145,7 +142,6 @@ header {
   text-transform: uppercase;
 }
 
-/* Navbar Styles */
 .navbar {
   background: var(--primary-color);
   padding: 10px 0;
@@ -199,7 +195,7 @@ header {
   max-width: 1200px;
   margin: var(--section-margin) auto;
   display: flex;
-  flex-wrap: nowrap; /* force side-by-side on larger screens */
+  flex-wrap: nowrap; /* Force side-by-side on larger screens */
   gap: 20px;
   padding: 0 var(--container-padding);
 }
@@ -506,14 +502,12 @@ header {
     padding: 10px;
   }
   
-  /* Ensure images in posts maintain aspect ratio */
   .img-container {
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* Maintain 16:9 ratio */
   }
   
-  /* Adjust post clamping for mobile */
   .post-excerpt {
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3; /* Fewer lines on small screens */
   }
 }
 
@@ -714,7 +708,6 @@ header {
 /* ==========================================================================
    Debugging & Development Helpers (Optional)
    ========================================================================== */
-/* Outline elements during development */
 .dev-outline * {
   outline: 1px solid rgba(255, 0, 0, 0.2);
 }

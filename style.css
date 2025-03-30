@@ -32,7 +32,7 @@ header {
   text-transform: uppercase;
 }
 
-/* Navbar: Force horizontal layout on all devices */
+/* Navbar */
 .navbar {
   overflow-x: auto;
 }

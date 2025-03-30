@@ -15,9 +15,15 @@
   --shadow-hover: rgba(0, 0, 0, 0.2);
   --transition-speed: 0.3s;
 
+  /* Fluid Typography using clamp() */
+  --fs-base: clamp(1rem, 2.5vw, 1.125rem);
+  --fs-h1: clamp(2rem, 4vw, 2.5rem);
+  --fs-h2: clamp(1.75rem, 3.5vw, 2.25rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
+  --fs-h4: clamp(1.25rem, 2.5vw, 1.75rem);
+
   /* Fonts & Typography */
   --font-family-base: 'Roboto', sans-serif;
-  --font-size-base: 16px;
   --line-height-base: 1.6;
 
   /* Spacing */
@@ -37,7 +43,7 @@
 }
 
 html {
-  font-size: var(--font-size-base);
+  font-size: var(--fs-base);
 }
 
 body {
@@ -118,8 +124,9 @@ body {
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Adaptive Navigation (Desktop & Mobile)
    ========================================================================== */
+/* --- Desktop Nav --- */
 header {
   background: var(--primary-color);
   color: #ffffff;
@@ -142,16 +149,57 @@ header {
   text-transform: uppercase;
 }
 
+/* Hamburger Toggle for Mobile */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: #ffffff;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  position: absolute;
+  transition: all var(--transition-speed);
+}
+
+.nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle-label span::before {
+  content: "";
+  top: -10px;
+}
+
+.nav-toggle-label span::after {
+  content: "";
+  top: 10px;
+}
+
+/* Navigation Container */
 .navbar {
   background: var(--primary-color);
-  padding: 10px 0;
+  padding: 10px var(--container-padding);
 }
 
 .navbar-nav {
   display: flex;
-  flex-wrap: wrap;  /* Allow wrapping on small screens */
+  flex-wrap: nowrap; /* Initially keep side by side */
   gap: 15px;
-  padding: 0 var(--container-padding);
+  padding: 0;
 }
 
 .navbar .nav-item {
@@ -169,6 +217,7 @@ header {
 }
 
 .navbar .nav-link:hover,
+.navbar .nav-link:focus,
 .navbar .nav-link.active {
   background: var(--secondary-color);
   transform: scale(1.05);
@@ -195,7 +244,7 @@ header {
   max-width: 1200px;
   margin: var(--section-margin) auto;
   display: flex;
-  flex-wrap: nowrap; /* Force side-by-side on larger screens */
+  flex-wrap: nowrap; /* Side by side on larger screens */
   gap: 20px;
   padding: 0 var(--container-padding);
 }
@@ -220,7 +269,7 @@ header {
 
 .breaking-news h2,
 .top-stories h2 {
-  font-size: 1.8rem;
+  font-size: var(--fs-h2);
   margin-bottom: 15px;
   text-transform: uppercase;
   padding-bottom: 5px;
@@ -229,7 +278,7 @@ header {
 
 .breaking-news p,
 .top-stories p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   margin-bottom: 10px;
   color: var(--text-color);
 }
@@ -273,14 +322,14 @@ header {
 }
 
 .post-card h3 {
-  font-size: 1.4rem;
+  font-size: var(--fs-h3);
   margin-bottom: 10px;
   text-transform: uppercase;
   color: var(--primary-color);
 }
 
 .post-card p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   margin-bottom: 10px;
   color: var(--text-color);
   flex-grow: 1;
@@ -299,7 +348,7 @@ header {
    ========================================================================== */
 .post-excerpt {
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -326,14 +375,14 @@ header {
 }
 
 .featured-article h3 {
-  font-size: 1.6rem;
+  font-size: var(--fs-h2);
   margin-bottom: 10px;
   text-transform: uppercase;
   color: var(--primary-color);
 }
 
 .featured-article p {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-color);
 }
 
@@ -349,7 +398,7 @@ header {
 }
 
 .sidebar h4 {
-  font-size: 1.4rem;
+  font-size: var(--fs-h3);
   margin-bottom: 10px;
   border-bottom: 1px solid var(--secondary-color);
   padding-bottom: 5px;
@@ -365,13 +414,14 @@ header {
 }
 
 .sidebar ul li a {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-color);
   text-decoration: none;
   transition: color var(--transition-speed);
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
   color: var(--secondary-color);
 }
 
@@ -397,7 +447,7 @@ header {
   padding: 10px;
   border: 1px solid var(--shadow);
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   transition: border var(--transition-speed);
 }
 
@@ -417,13 +467,14 @@ header {
   border: none;
   border-radius: 30px;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   cursor: pointer;
   transition: background var(--transition-speed), transform var(--transition-speed);
   text-decoration: none;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background: #b71c1c;
   transform: scale(1.05);
 }
@@ -483,23 +534,34 @@ header {
 /* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
-
 /* Small Devices */
 @media (max-width: 768px) {
-  .navbar-nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  /* Show hamburger toggle on mobile */
+  .nav-toggle {
+    display: block;
   }
-  
-  .top-news-container {
+  .nav-toggle-label {
+    display: block;
+  }
+  /* Hide the regular navbar-nav by default */
+  .navbar-nav {
+    display: none;
     flex-direction: column;
+    width: 100%;
+  }
+  /* When toggle is checked, show nav menu */
+  .nav-toggle:checked ~ .navbar-nav {
+    display: flex;
   }
   
   .header-top,
   .navbar,
   .news-ticker {
     padding: 10px;
+  }
+  
+  .top-news-container {
+    flex-direction: column;
   }
   
   .img-container {
@@ -539,10 +601,9 @@ header {
 /* ==========================================================================
    Extra Spacing & Layout Tweaks (Additional Custom Styling)
    ========================================================================== */
-
 /* Section Headings */
 .section-heading {
-  font-size: 2rem;
+  font-size: var(--fs-h1);
   margin-bottom: 15px;
   text-transform: uppercase;
   color: var(--primary-color);
@@ -553,7 +614,7 @@ header {
 
 /* Article Excerpts */
 .article-excerpt {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-color);
   margin-bottom: 10px;
 }
@@ -609,7 +670,6 @@ header {
 /* ==========================================================================
    Additional Widgets & Blocks
    ========================================================================== */
-
 /* Social Media Widget */
 .social-media {
   display: flex;
@@ -624,7 +684,8 @@ header {
   text-decoration: none;
 }
 
-.social-media a:hover {
+.social-media a:hover,
+.social-media a:focus {
   color: var(--secondary-color);
 }
 
@@ -658,7 +719,7 @@ header {
 }
 
 .footer-widget h5 {
-  font-size: 1.2rem;
+  font-size: var(--fs-h3);
   margin-bottom: 10px;
   text-transform: uppercase;
   color: var(--primary-color);
@@ -680,7 +741,8 @@ header {
   transition: color var(--transition-speed);
 }
 
-.footer-widget ul li a:hover {
+.footer-widget ul li a:hover,
+.footer-widget ul li a:focus {
   color: var(--secondary-color);
 }
 

@@ -1,19 +1,12 @@
-// script.js
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const newsContainer = document.getElementById('newsContainer');
   const trendingContainer = document.getElementById('trendingContainer');
+  const breakingNewsContainer = document.getElementById('breakingNewsContainer');
   const navLinks = document.querySelectorAll('.navbar a');
 
-  // Fetch news data from data.json and filter by category if needed
   function fetchNews(category = 'all') {
     fetch('data.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not OK');
-        }
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         let posts = data.posts;
         if (category !== 'all') {
@@ -21,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         renderLatestNews(posts);
         renderTrendingNews(posts);
+        renderBreakingNews(posts);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -28,12 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  // Open post in a new window using the post's slug as query parameter
   function openPost(slug) {
     window.open(`post.html?slug=${encodeURIComponent(slug)}`, '_blank');
   }
 
-  // Render the "Latest News" grid with clickable cards
   function renderLatestNews(posts) {
     newsContainer.innerHTML = '';
     if (posts.length === 0) {
@@ -43,59 +35,64 @@ document.addEventListener('DOMContentLoaded', function() {
     posts.forEach(post => {
       const card = document.createElement('div');
       card.className = 'news-card col';
-      let cardHTML = '';
-      if (post.image) {
-        cardHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">`;
-      }
-      cardHTML += `<div class="news-card-content">`;
-      cardHTML += `<h3>${post.title}</h3>`;
-      cardHTML += `<p>${post.content.substring(0, 120)}...</p>`;
-      cardHTML += `<small>${post.category}</small>`;
-      cardHTML += `</div>`;
-      card.innerHTML = cardHTML;
-      // Click event: open post in new window
-      card.addEventListener('click', function() {
-        openPost(post.slug);
-      });
+      card.innerHTML = `
+        <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">
+        <div class="news-card-content">
+          <h3>${post.title}</h3>
+          <p>${post.content.substring(0, 120)}...</p>
+          <small>${post.category}</small>
+        </div>
+      `;
+      card.addEventListener('click', () => openPost(post.slug));
       newsContainer.appendChild(card);
     });
   }
 
-  // Render the "Trending" section (first 3 posts as trending) with clickable items
   function renderTrendingNews(posts) {
     trendingContainer.innerHTML = '';
     const trendingPosts = posts.slice(0, 3);
     trendingPosts.forEach(post => {
-      const trendingItem = document.createElement('div');
-      trendingItem.className = 'trending-item';
-      let itemHTML = '';
-      if (post.image) {
-        itemHTML += `<img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">`;
-      }
-      itemHTML += `<div class="trending-item-content">`;
-      itemHTML += `<h4>${post.title}</h4>`;
-      itemHTML += `<small>${post.category}</small>`;
-      itemHTML += `</div>`;
-      trendingItem.innerHTML = itemHTML;
-      // Click event: open post in new window
-      trendingItem.addEventListener('click', function() {
-        openPost(post.slug);
-      });
-      trendingContainer.appendChild(trendingItem);
+      const item = document.createElement('div');
+      item.className = 'trending-item';
+      item.innerHTML = `
+        <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.style.display='none'">
+        <div class="trending-item-content">
+          <h4>${post.title}</h4>
+          <small>${post.category}</small>
+        </div>
+      `;
+      item.addEventListener('click', () => openPost(post.slug));
+      trendingContainer.appendChild(item);
     });
   }
 
-  // Initial load: fetch all news
+  function renderBreakingNews(posts) {
+    breakingNewsContainer.innerHTML = '';
+    const breakingNews = posts.slice(0, 6);
+
+    breakingNews.forEach((post, index) => {
+      const item = document.createElement('div');
+      item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+      item.innerHTML = `
+        <img src="${post.image}" class="d-block w-100" alt="${post.title}" />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>${post.title}</h5>
+          <p>${post.content.substring(0, 100)}...</p>
+        </div>
+      `;
+      item.addEventListener('click', () => openPost(post.slug));
+      breakingNewsContainer.appendChild(item);
+    });
+  }
+
   fetchNews();
 
-  // Filter news by category when a navbar link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       navLinks.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
-      const category = link.getAttribute('data-category');
-      fetchNews(category);
+      fetchNews(link.getAttribute('data-category'));
     });
   });
 });

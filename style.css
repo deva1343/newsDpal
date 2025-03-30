@@ -12,7 +12,7 @@ body {
   line-height: 1.6;
 }
 
-/* Header styles */
+/* ================= HEADER ================= */
 header {
   background: #222;
   color: #fff;
@@ -33,7 +33,8 @@ header {
   text-transform: uppercase;
 }
 
-/* Navbar */
+/* ================= NAVBAR ================= */
+/* Ensures navbar remains horizontal on all devices */
 .navbar {
   overflow-x: auto;
 }
@@ -63,16 +64,7 @@ header {
   transform: scale(1.05);
 }
 
-/* News Ticker */
-.news-ticker {
-  font-size: 0.95rem;
-}
-
-.news-ticker marquee {
-  color: #fff;
-}
-
-/* Hero Section */
+/* ================= HERO SECTION ================= */
 .hero {
   position: relative;
   background: url('https://picsum.photos/1200/400?random=2') center/cover no-repeat;
@@ -126,66 +118,15 @@ header {
   background: #ff5722;
 }
 
-/* Main Content */
+/* ================= MAIN CONTENT ================= */
 main {
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
 }
 
-/* News Grid & Card Styles */
-.news-grid .news-card {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.news-grid .news-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.news-grid .news-card img {
-  width: 100%;
-  display: block;
-  height: auto;
-}
-
-/* Trending List Styles */
-.trending-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.trending-item {
-  background: #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s, transform 0.2s;
-  cursor: pointer;
-}
-
-.trending-item:hover {
-  background: #f8f8f8;
-  transform: scale(1.02);
-}
-
-.trending-item img {
-  width: 85px;
-  height: 65px;
-  object-fit: cover;
-  margin-right: 15px;
-  border-radius: 5px;
-}
-
-/* Breaking News & Top Stories Container */
+/* ================= NEWS CONTAINER ================= */
+/* Breaking News on the left | Top Stories on the right */
 .news-container {
   display: flex;
   max-width: 1200px;
@@ -193,19 +134,87 @@ main {
   gap: 20px;
 }
 
-/* Breaking News Section */
-.breaking-news,
+/* ================= BREAKING NEWS (HORIZONTAL SLIDER) ================= */
+.breaking-news {
+  width: 50%;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.breaking-news h2 {
+  font-size: 1.4rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #222;
+  margin-bottom: 12px;
+}
+
+/* Horizontal scrolling effect */
+.breaking-news-list {
+  display: flex;
+  gap: 15px;
+  width: 200%;
+  animation: slide-news 10s linear infinite;
+}
+
+@keyframes slide-news {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* Scrolls left */
+}
+
+.breaking-news-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  min-width: 250px; /* Ensures smooth horizontal scrolling */
+}
+
+.breaking-news-item:hover {
+  background: #f9f9f9;
+}
+
+.breaking-news-item img {
+  width: 70px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.breaking-news-content {
+  flex: 1;
+}
+
+.breaking-news-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: capitalize;
+}
+
+.breaking-news-content p {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: normal;
+}
+
+/* ================= TOP STORIES (VERTICAL SLIDER) ================= */
 .top-stories {
   width: 50%;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
-.breaking-news h2,
 .top-stories h2 {
   font-size: 1.4rem;
   padding-bottom: 8px;
@@ -213,79 +222,80 @@ main {
   margin-bottom: 12px;
 }
 
-/* Scrolling Effect */
-.breaking-news-list,
+/* Vertical scrolling effect */
 .top-stories-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.breaking-news-list {
-  animation: slide-news 10s linear infinite;
-}
-
-.top-stories-list {
+  position: relative;
   height: 150px;
+  overflow: hidden;
   animation: rotate-top-stories 10s linear infinite;
 }
 
-@keyframes slide-news {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 @keyframes rotate-top-stories {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); } /* Moves up like live commentary */
 }
 
-/* Responsive Adjustments */
+.top-stories-item {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 0;
+  color: #333;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.top-stories-item:hover {
+  color: #ff4500;
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
 @media (max-width: 768px) {
   .news-container {
     flex-direction: column;
-    gap: 15px;
   }
 
-  .breaking-news,
-  .top-stories {
+  .breaking-news, .top-stories {
     width: 100%;
   }
 
-  .breaking-news-item img {
-    width: 60px;
-    height: 50px;
-  }
-
-  .breaking-news-content h3 {
-    font-size: 0.9rem;
-  }
-
-  .breaking-news-content p {
-    font-size: 0.8rem;
-    max-width: 100%;
+  .breaking-news-list {
+    width: 100%;
+    animation: slide-news 15s linear infinite; /* Slower on mobile */
   }
 
   .top-stories-list {
     height: auto;
-    animation: none;
+    animation: none; /* Disable auto animation for mobile */
+  }
+
+  .top-stories-item {
+    padding: 8px 0;
+    font-size: 0.9rem;
   }
 }
 
-/* Footer */
-footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 18px 20px;
-  margin-top: 40px;
-  font-size: 0.95rem;
+@media (max-width: 480px) {
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .breaking-news-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .breaking-news-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .breaking-news-content p {
+    max-width: 100%;
+    white-space: normal;
+  }
 }

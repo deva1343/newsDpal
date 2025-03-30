@@ -1,5 +1,3 @@
-// post.js
-
 document.addEventListener('DOMContentLoaded', function() {
   // Helper function to get query parameters
   function getQueryParam(param) {
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       // Update the content on the page
       document.getElementById('postHeading').textContent = post.title;
-      document.getElementById('postBody').textContent = post.content;
+      document.getElementById('postBody').innerHTML = post.content;
       document.getElementById('postCategory').textContent = post.category;
       const postImg = document.getElementById('postImage');
       if (post.image) {

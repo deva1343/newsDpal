@@ -15,18 +15,16 @@
   --shadow-hover: rgba(0, 0, 0, 0.2);
   --transition-speed: 0.3s;
 
-  /* Fluid Typography using clamp() */
+  /* Fluid Typography */
   --fs-base: clamp(1rem, 2.5vw, 1.125rem);
   --fs-h1: clamp(2rem, 4vw, 2.5rem);
   --fs-h2: clamp(1.75rem, 3.5vw, 2.25rem);
   --fs-h3: clamp(1.5rem, 3vw, 2rem);
   --fs-h4: clamp(1.25rem, 2.5vw, 1.75rem);
 
-  /* Fonts & Typography */
+  /* Fonts & Spacing */
   --font-family-base: 'Roboto', sans-serif;
   --line-height-base: 1.6;
-
-  /* Spacing */
   --container-padding: 20px;
   --section-margin: 40px;
   --grid-gap: 30px;
@@ -36,9 +34,10 @@
    Global Reset & Base Styling
    ========================================================================== */
 html, body {
-  overflow-x: hidden;
   background-color: var(--light-bg);
   color: var(--text-color);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
 }
 
 *,
@@ -49,31 +48,9 @@ html, body {
   box-sizing: border-box;
 }
 
-html {
-  font-size: var(--fs-base);
-}
-
-body {
-  font-family: var(--font-family-base);
-  line-height: var(--line-height-base);
-}
-
 /* ==========================================================================
    Utility Classes & Helpers
    ========================================================================== */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-}
-
 .text-center {
   text-align: center;
 }
@@ -95,7 +72,7 @@ body {
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation (Override Bootstrap)
    ========================================================================== */
 header {
   background: var(--primary-color);
@@ -103,13 +80,10 @@ header {
   padding: 10px var(--container-padding);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1050;
 }
 
 .header-top {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -122,76 +96,29 @@ header {
   text-transform: uppercase;
 }
 
-/* Hamburger Toggle for Mobile */
-.nav-toggle {
-  display: none;
-}
-
-.nav-toggle-label {
-  display: none;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  position: relative;
-}
-
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
-  display: block;
-  background: #ffffff;
-  height: 3px;
-  width: 100%;
-  border-radius: 2px;
-  position: absolute;
-  transition: all var(--transition-speed);
-}
-
-.nav-toggle-label span {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.nav-toggle-label span::before {
-  content: "";
-  top: -10px;
-}
-
-.nav-toggle-label span::after {
-  content: "";
-  top: 10px;
-}
-
-/* Navigation Container */
+/* Navigation styling */
 .navbar {
-  background: var(--primary-color);
-  padding: 10px var(--container-padding);
+  padding: 0;
 }
 
 .navbar-nav {
   display: flex;
-  flex-wrap: nowrap;
   gap: 15px;
-  padding: 0;
+  list-style: none;
 }
 
-.navbar .nav-item {
-  flex: 0 0 auto;
-}
-
-.navbar .nav-link {
+.navbar-nav .nav-link {
   font-size: 1rem;
   font-weight: 500;
-  color: #ffffff;
-  text-decoration: none;
+  color: #ffffff !important;
   padding: 10px 14px;
   border-radius: 6px;
+  text-decoration: none;
   transition: background var(--transition-speed), transform 0.2s;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link:focus,
-.navbar .nav-link.active {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
   background: var(--secondary-color);
   transform: scale(1.05);
 }
@@ -200,82 +127,67 @@ header {
    Hero Section
    ========================================================================== */
 .hero {
-  display: block;
   position: relative;
   width: 100%;
-  overflow: hidden;
+  height: 400px;
+  background: url("https://picsum.photos/1200/400?random=1") center center/cover no-repeat;
   margin-bottom: var(--section-margin);
 }
 
-.hero img {
-  width: 100%;
-  height: auto;
-  display: block;
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
 }
 
-.hero .hero-content {
+.hero-content {
   position: absolute;
   bottom: 20px;
   left: 30px;
-  background: rgba(0,0,0,0.6);
+  z-index: 2;
   color: #fff;
+  max-width: 80%;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
 }
 
-.hero .hero-content h1 {
+.hero-content h1 {
   font-size: var(--fs-h1);
   margin-bottom: 10px;
 }
 
-.hero .hero-content p {
+.hero-content p {
   font-size: var(--fs-base);
+  margin-bottom: 15px;
+}
+
+.hero-content .btn {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background var(--transition-speed);
+}
+
+.hero-content .btn:hover {
+  background: darkred;
 }
 
 /* ==========================================================================
-   News Ticker
+   Breaking News & Top Stories Section
    ========================================================================== */
-.news-ticker {
-  background: var(--primary-color);
-  color: #ffffff;
-  font-size: 0.95rem;
-  padding: 5px var(--container-padding);
-}
-
-.news-ticker marquee {
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   Top News Section (Breaking News & Top Stories)
-   ========================================================================== */
-.top-news-container {
-  max-width: 1200px;
-  margin: var(--section-margin) auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 var(--container-padding);
-}
-
-.breaking-news {
-  flex: 1 1 60%;
-  min-width: 300px;
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
+.breaking-news,
 .top-stories {
-  flex: 1 1 35%;
-  min-width: 300px;
   background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px var(--shadow);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  margin-bottom: var(--section-margin);
 }
 
 .breaking-news:hover,
@@ -287,282 +199,89 @@ header {
 .breaking-news h2,
 .top-stories h2 {
   font-size: var(--fs-h2);
-  margin-bottom: 15px;
   text-transform: uppercase;
   padding-bottom: 5px;
   border-bottom: 2px solid var(--accent-color);
   color: var(--primary-color);
-}
-
-.breaking-news-item,
-.top-stories-item {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
-}
-
-.breaking-news-item:last-child,
-.top-stories-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.breaking-news-item h3,
-.top-stories-item h3 {
-  font-size: var(--fs-h3);
-  margin-bottom: 8px;
-}
-
-.breaking-news-item p,
-.top-stories-item p {
-  font-size: var(--fs-base);
-  color: var(--text-color);
-  margin-bottom: 8px;
-}
-
-.breaking-news-item .post-meta,
-.top-stories-item .post-meta {
-  font-size: 0.85rem;
-  color: #777;
-}
-
-/* ==========================================================================
-   Featured News Section
-   ========================================================================== */
-.featured-news {
-  max-width: 1200px;
-  margin: var(--section-margin) auto;
-  padding: 0 var(--container-padding);
-}
-
-.featured-news h2 {
-  font-size: var(--fs-h2);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  border-bottom: 2px solid var(--accent-color);
-  color: var(--primary-color);
-}
-
-.featured-news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--grid-gap);
-}
-
-.featured-news-card {
-  background: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  overflow: hidden;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.featured-news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px var(--shadow-hover);
-}
-
-.featured-news-card .img-container {
   margin-bottom: 15px;
 }
 
-.featured-news-card .featured-content {
-  padding: 15px;
-}
-
-.featured-news-card h3 {
-  font-size: var(--fs-h3);
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
-
-.featured-news-card p {
-  font-size: var(--fs-base);
-  margin-bottom: 10px;
-  color: var(--text-color);
-}
-
-/* ==========================================================================
-   Posts Grid Layout
-   ========================================================================== */
-.posts-grid {
-  max-width: 1200px;
-  margin: var(--section-margin) auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--grid-gap);
-  padding: 0 var(--container-padding);
-}
-
-.post-card {
-  background: var(--card-bg);
+/* Carousel adjustments (Breaking News) */
+.carousel-inner {
   border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  overflow: hidden;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px var(--shadow-hover);
-}
-
-.post-card .img-container {
-  margin-bottom: 15px;
-}
-
-.post-card .post-content {
-  padding: 15px;
-}
-
-.post-card h3 {
-  font-size: var(--fs-h3);
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
-
-.post-card p {
-  font-size: var(--fs-base);
-  margin-bottom: 10px;
-  color: var(--text-color);
-}
-
-.post-card .card-footer {
-  padding: 10px 15px;
-  background: #fafafa;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-/* ==========================================================================
-   Post Content Clamping
-   ========================================================================== */
-.post-excerpt {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Featured Article Block
-   ========================================================================== */
-.featured-article {
-  background: var(--card-bg);
-  padding: 20px;
-  margin-bottom: var(--section-margin);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  overflow: hidden;
-  transition: transform var(--transition-speed);
-}
-
-.featured-article:hover {
-  transform: scale(1.02);
-}
-
-.featured-article .img-container {
-  margin-bottom: 15px;
-}
-
-.featured-article h3 {
-  font-size: var(--fs-h2);
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
-
-.featured-article p {
-  font-size: var(--fs-base);
+.carousel-item {
+  height: 250px;
+  background: var(--light-bg);
   color: var(--text-color);
-}
-
-/* ==========================================================================
-   Sidebar Widget
-   ========================================================================== */
-.sidebar {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  margin-bottom: var(--section-margin);
-}
-
-.sidebar h4 {
-  font-size: var(--fs-h3);
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--secondary-color);
-  padding-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar ul li {
-  margin-bottom: 8px;
-}
-
-.sidebar ul li a {
-  font-size: var(--fs-base);
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color var(--transition-speed);
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li a:focus {
-  color: var(--secondary-color);
-}
-
-/* ==========================================================================
-   Footer & Additional Components
-   ========================================================================== */
-.footer-widgets {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
   justify-content: center;
-  margin-bottom: var(--section-margin);
+  font-size: var(--fs-base);
 }
 
-.footer-widget {
-  flex: 1 1 250px;
+/* Top Stories List */
+.top-stories-list > div {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.top-stories-list > div:last-child {
+  border: none;
+}
+
+/* ==========================================================================
+   Latest News & Trending Sections
+   ========================================================================== */
+.latest-news h2,
+.trending-news h2 {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--accent-color);
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* News Cards (Using Bootstrap’s grid, but overriding card look) */
+.news-grid .col,
+.trending-list .news-item {
   background: var(--card-bg);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 8px var(--shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  margin-bottom: var(--grid-gap);
 }
 
-.footer-widget h5 {
-  font-size: var(--fs-h3);
+.news-grid .col:hover,
+.trending-list .news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-hover);
+}
+
+.news-grid img,
+.trending-list img {
+  width: 100%;
+  border-radius: 5px;
   margin-bottom: 10px;
-  text-transform: uppercase;
-  color: var(--primary-color);
 }
 
-.footer-widget ul {
-  list-style: none;
-  padding: 0;
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 20px var(--container-padding);
 }
 
-.footer-widget ul li {
-  margin-bottom: 8px;
-}
-
-.footer-widget ul li a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color var(--transition-speed);
-}
-
-.footer-widget ul li a:hover,
-.footer-widget ul li a:focus {
-  color: var(--secondary-color);
+footer p {
+  margin: 0;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -570,94 +289,31 @@ header {
    ========================================================================== */
 /* Small Devices */
 @media (max-width: 768px) {
-  /* Navigation */
-  .nav-toggle-label {
-    display: block;
+  .hero {
+    height: 300px;
   }
-  
-  .navbar-nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .nav-toggle:checked ~ .navbar-nav {
-    display: flex;
-  }
-  
-  /* Hero Section - Adjust text placement */
-  .hero .hero-content {
+  .hero-content {
     left: 10px;
     right: 10px;
     bottom: 10px;
     padding: 15px;
   }
-  
-  /* Top News Layout */
-  .top-news-container {
+  .navbar-nav {
     flex-direction: column;
-  }
-  
-  .breaking-news,
-  .top-stories {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-  
-  /* Posts & Featured News Grids */
-  .posts-grid,
-  .featured-news-grid {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
 /* Medium Devices */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .navbar-nav {
-    gap: 12px;
+  .hero {
+    height: 350px;
   }
-  
-  .logo {
-    font-size: 1.8rem;
-  }
-  
-  .navbar .nav-link {
-    font-size: 0.95rem;
-    padding: 8px 12px;
-  }
-  
-  .breaking-news h2,
-  .top-stories h2 {
-    font-size: 1.6rem;
-  }
-  
-  .featured-article h3 {
-    font-size: 1.4rem;
-  }
-}
-
-/* Large Devices */
-@media (min-width: 1025px) {
-  /* Ensure top news sections stay side by side */
-  .top-news-container {
-    flex-wrap: nowrap;
-  }
-  
-  .breaking-news {
-    flex: 0 0 60%;
-  }
-  
-  .top-stories {
-    flex: 0 0 35%;
-  }
-  
-  /* Optional spacer if needed */
-  .top-news-container::after {
-    content: "";
-    flex: 0 0 5%;
+  .hero-content h1 {
+    font-size: calc(var(--fs-h1) - 0.5rem);
   }
 }
 
 /* ==========================================================================
    End of CSS
-   ========================================================================= */
+   ========================================================================== */

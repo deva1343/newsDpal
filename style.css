@@ -1,5 +1,5 @@
-/* ==========================================================================
-   BASE RESET & GLOBAL STYLES
+/* ==========================================================================  
+   BASE RESET & GLOBAL STYLES  
    ========================================================================== */
 :root {
   /* Color Scheme */
@@ -76,8 +76,8 @@ img {
   padding: 0 var(--container-padding);
 }
 
-/* ==========================================================================
-   HEADER STYLES
+/* ==========================================================================  
+   HEADER STYLES  
    ========================================================================== */
 header {
   background: var(--dark-bg);
@@ -140,8 +140,8 @@ header {
   width: 100%;
 }
 
-/* ==========================================================================
-   BREAKING & TOP STORIES SECTION
+/* ==========================================================================  
+   BREAKING & TOP STORIES SECTION  
    ========================================================================== */
 .breaking-top-stories {
   margin-top: var(--section-margin);
@@ -251,8 +251,8 @@ header {
   color: #888;
 }
 
-/* ==========================================================================
-   HERO SECTION
+/* ==========================================================================  
+   HERO SECTION  
    ========================================================================== */
 .hero {
   position: relative;
@@ -309,13 +309,14 @@ header {
   transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   MAIN CONTENT AREA
+/* ==========================================================================  
+   MAIN CONTENT AREA (News Posts Section)  
    ========================================================================== */
 main {
   margin-bottom: var(--section-margin);
 }
 
+/* Headings for Latest & Trending */
 .latest-news h2,
 .trending-news h2 {
   font-size: var(--fs-h2);
@@ -326,19 +327,23 @@ main {
   border-bottom: 3px solid var(--primary-color);
 }
 
+/* News Grid Layout */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--grid-gap);
   margin-bottom: var(--section-margin);
 }
 
+/* News Card: Contained & Consistent Size */
 .news-card {
   background: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  display: flex;
+  flex-direction: column;
 }
 
 .news-card:hover {
@@ -346,14 +351,23 @@ main {
   box-shadow: var(--shadow-hover);
 }
 
-.news-card img {
+/* Image Container: Fixed Height & Containment */
+.news-card .img-container {
   width: 100%;
-  height: 200px;
+  height: 200px;  /* fixed height for consistency */
+  overflow: hidden;
+}
+
+.news-card .img-container img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
+/* News Content */
 .news-content {
   padding: var(--card-padding);
+  flex: 1;
 }
 
 .news-content h3 {
@@ -365,6 +379,11 @@ main {
 .news-content p {
   color: #666;
   margin-bottom: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;  /* limit text to 4 lines */
+  -webkit-box-orient: vertical;
 }
 
 .news-meta {
@@ -372,6 +391,9 @@ main {
   color: #888;
 }
 
+/* ==========================================================================  
+   TRENDING SECTION  
+   ========================================================================== */
 .trending-list {
   display: grid;
   gap: 1rem;
@@ -404,8 +426,8 @@ main {
   color: #666;
 }
 
-/* ==========================================================================
-   FOOTER
+/* ==========================================================================  
+   FOOTER  
    ========================================================================== */
 footer {
   background: var(--dark-bg);
@@ -414,8 +436,8 @@ footer {
   text-align: center;
 }
 
-/* ==========================================================================
-   RESPONSIVE ADJUSTMENTS
+/* ==========================================================================  
+   RESPONSIVE ADJUSTMENTS  
    ========================================================================== */
 @media (min-width: 768px) {
   :root {

@@ -90,24 +90,115 @@
   <!-- Main Content -->
   <main class="container my-5">
     <div class="row">
-      <!-- LEFT COLUMN: LATEST NEWS -->
-      <div class="col-lg-8">
+      <!-- MAIN CONTENT COLUMN -->
+      <div class="col-12">
         <section class="latest-news">
-          <h2>Latest News</h2>
-          <div id="newsContainer" class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
-            <!-- News cards will be inserted here dynamically -->
+          <div class="section-header">
+            <h2 class="section-title">Latest News</h2>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          
+          <div id="newsContainer" class="news-grid">
+            <!-- Featured Article (will be first in dynamic content) -->
+            <article class="news-card featured-article">
+              <div class="news-image">
+                <img src="https://picsum.photos/800/450?random=1" alt="Featured news">
+              </div>
+              <div class="news-content">
+                <span class="news-category">Finance</span>
+                <h3 class="news-title">Global Markets React to New Economic Policies With Significant Changes</h3>
+                <p class="news-excerpt">Major financial markets worldwide showed volatile trading as investors digested the latest central bank announcements. Analysts predict continued turbulence in the coming weeks.</p>
+                <div class="news-meta">2 hours ago • By Sarah Johnson</div>
+              </div>
+            </article>
+            
+            <!-- Regular News Cards -->
+            <article class="news-card">
+              <div class="news-image">
+                <img src="https://picsum.photos/400/225?random=2" alt="News image">
+              </div>
+              <div class="news-content">
+                <span class="news-category">Technology</span>
+                <h3 class="news-title">New AI Regulation Framework Proposed by European Commission</h3>
+                <div class="news-meta">5 hours ago • By Michael Chen</div>
+              </div>
+            </article>
+            
+            <article class="news-card">
+              <div class="news-image">
+                <img src="https://picsum.photos/400/225?random=3" alt="News image">
+              </div>
+              <div class="news-content">
+                <span class="news-category">Markets</span>
+                <h3 class="news-title">Commodity Prices Surge Amid Supply Chain Disruptions</h3>
+                <div class="news-meta">7 hours ago • By Robert Williams</div>
+              </div>
+            </article>
+            
+            <article class="news-card">
+              <div class="news-image">
+                <img src="https://picsum.photos/400/225?random=4" alt="News image">
+              </div>
+              <div class="news-content">
+                <span class="news-category">Banking</span>
+                <h3 class="news-title">Major Banks Report Strong Q2 Earnings Despite Economic Uncertainty</h3>
+                <div class="news-meta">9 hours ago • By Elizabeth Taylor</div>
+              </div>
+            </article>
+            
+            <article class="news-card">
+              <div class="news-image">
+                <img src="https://picsum.photos/400/225?random=5" alt="News image">
+              </div>
+              <div class="news-content">
+                <span class="news-category">Startups</span>
+                <h3 class="news-title">Fintech Startup Raises $150M in Series C Funding Round</h3>
+                <div class="news-meta">Yesterday • By David Kim</div>
+              </div>
+            </article>
           </div>
         </section>
 
         <section class="trending-news my-5">
-          <h2>Trending</h2>
+          <div class="section-header">
+            <h2 class="section-title">Trending Now</h2>
+            <a href="#" class="view-all">View All</a>
+          </div>
           <div id="trendingContainer" class="trending-list">
-            <!-- Trending news will be inserted here dynamically -->
+            <article class="trending-item">
+              <div class="trending-number">1</div>
+              <div class="trending-content">
+                <h3 class="trending-title">Bitcoin Surges Past $50,000 Amid Institutional Adoption</h3>
+                <p class="trending-meta">3 hours ago • 1,245 reads</p>
+              </div>
+            </article>
+            
+            <article class="trending-item">
+              <div class="trending-number">2</div>
+              <div class="trending-content">
+                <h3 class="trending-title">Federal Reserve Signals Potential Rate Hike Timeline</h3>
+                <p class="trending-meta">5 hours ago • 982 reads</p>
+              </div>
+            </article>
+            
+            <article class="trending-item">
+              <div class="trending-number">3</div>
+              <div class="trending-content">
+                <h3 class="trending-title">Sustainable Investing Gains Momentum Among Pension Funds</h3>
+                <p class="trending-meta">7 hours ago • 756 reads</p>
+              </div>
+            </article>
+            
+            <article class="trending-item">
+              <div class="trending-number">4</div>
+              <div class="trending-content">
+                <h3 class="trending-title">Major Merger Creates New Banking Giant in Asia-Pacific</h3>
+                <p class="trending-meta">9 hours ago • 632 reads</p>
+              </div>
+            </article>
           </div>
         </section>
       </div>
-
-  
     </div>
   </main>
 

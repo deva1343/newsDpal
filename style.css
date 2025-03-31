@@ -1,319 +1,496 @@
 /* ==========================================================================
-   CSS Variables & Global Settings
+   BASE RESET & GLOBAL STYLES
    ========================================================================== */
 :root {
-  /* Primary Colors */
-  --primary-color: #0d47a1;      /* Deep blue for headers & backgrounds */
-  --secondary-color: #1565c0;    /* Lighter blue for hover & secondary elements */
-  --accent-color: #d32f2f;       /* Accent red for CTAs & borders */
-  --text-color: #333333;         /* Primary text color */
-  --light-bg: #f9f9f9;           /* Light background for pages */
-  --card-bg: #ffffff;            /* Card backgrounds */
+  /* Color Scheme */
+  --primary-color: #0056b3;      /* Primary brand color */
+  --secondary-color: #e31837;    /* Accent color */
+  --accent-color: #ffd700;       /* Highlight color */
+  --text-color: #222;
+  --light-bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --dark-bg: #1a1a1a;
+  --border-color: #e0e0e0;
 
-  /* Shadows & Transitions */
-  --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-hover: rgba(0, 0, 0, 0.2);
-  --transition-speed: 0.3s;
+  /* Typography */
+  --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Playfair Display', serif;
+  --fs-base: 1rem;
+  --fs-h1: 2rem;
+  --fs-h2: 1.75rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-small: 0.85rem;
 
-  /* Fluid Typography */
-  --fs-base: clamp(1rem, 2.5vw, 1.125rem);
-  --fs-h1: clamp(2rem, 4vw, 2.5rem);
-  --fs-h2: clamp(1.75rem, 3.5vw, 2.25rem);
-  --fs-h3: clamp(1.5rem, 3vw, 2rem);
-  --fs-h4: clamp(1.25rem, 2.5vw, 1.75rem);
+  /* Spacing */
+  --container-padding: 1rem;
+  --section-margin: 2rem;
+  --grid-gap: 1.5rem;
+  --card-padding: 1.25rem;
 
-  /* Fonts & Spacing */
-  --font-family-base: 'Roboto', sans-serif;
-  --line-height-base: 1.6;
-  --container-padding: 20px;
-  --section-margin: 40px;
-  --grid-gap: 30px;
+  /* Effects */
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.12);
+  --transition-speed: 0.25s;
 }
 
-/* ==========================================================================
-   Global Reset & Base Styling
-   ========================================================================== */
-html, body {
-  background-color: var(--light-bg);
-  color: var(--text-color);
-  font-family: var(--font-family-base);
-  line-height: var(--line-height-base);
-}
-
-*,
-*::before,
-*::after {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--light-bg);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
 }
 
 /* ==========================================================================
-   Utility Classes & Helpers
-   ========================================================================== */
-.text-center {
-  text-align: center;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.border-bottom-accent {
-  border-bottom: 2px solid var(--accent-color);
-}
-
-.transition {
-  transition: all var(--transition-speed) ease-in-out;
-}
-
-.box-shadow {
-  box-shadow: 0 2px 8px var(--shadow);
-}
-
-/* ==========================================================================
-   Header & Navigation (Override Bootstrap)
+   HEADER STYLES
    ========================================================================== */
 header {
-  background: var(--primary-color);
-  color: #ffffff;
-  padding: 10px var(--container-padding);
+  background: var(--dark-bg);
+  color: white;
+  padding: 1rem 0;
   position: sticky;
   top: 0;
-  z-index: 1050;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  color: white;
+  margin-bottom: 0.5rem;
 }
 
-/* Navigation styling */
 .navbar {
-  padding: 0;
+  width: 100%;
 }
 
 .navbar-nav {
   display: flex;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 1rem;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.navbar-nav .nav-link {
-  font-size: 1rem;
+.nav-link {
+  color: white;
   font-weight: 500;
-  color: #ffffff !important;
-  padding: 10px 14px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background var(--transition-speed), transform 0.2s;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  background: var(--secondary-color);
-  transform: scale(1.05);
-}
-
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
-.hero {
+  padding: 0.5rem 0;
   position: relative;
-  width: 100%;
-  height: 400px;
-  background: url("https://picsum.photos/1200/400?random=1") center center/cover no-repeat;
-  margin-bottom: var(--section-margin);
 }
 
-.hero::before {
-  content: "";
+.nav-link:after {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-}
-
-.hero-content {
-  position: absolute;
-  bottom: 20px;
-  left: 30px;
-  z-index: 2;
-  color: #fff;
-  max-width: 80%;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-}
-
-.hero-content h1 {
-  font-size: var(--fs-h1);
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: var(--fs-base);
-  margin-bottom: 15px;
-}
-
-.hero-content .btn {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
   background: var(--accent-color);
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background var(--transition-speed);
+  transition: width var(--transition-speed);
 }
 
-.hero-content .btn:hover {
-  background: darkred;
+.nav-link:hover:after,
+.nav-link.active:after {
+  width: 100%;
 }
 
 /* ==========================================================================
-   Breaking News & Top Stories Section
+   BREAKING & TOP STORIES SECTION
    ========================================================================== */
-.breaking-news,
-.top-stories {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  margin-bottom: var(--section-margin);
+.breaking-top-stories {
+  margin-top: var(--section-margin);
 }
 
-.breaking-news:hover,
-.top-stories:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px var(--shadow-hover);
+.breaking-news, 
+.top-stories {
+  margin-bottom: var(--section-margin);
 }
 
 .breaking-news h2,
 .top-stories h2 {
   font-size: var(--fs-h2);
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  border-bottom: 2px solid var(--accent-color);
+  font-family: var(--font-family-heading);
   color: var(--primary-color);
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--primary-color);
+  text-align: center;
 }
 
-/* Carousel adjustments (Breaking News) */
-.carousel-inner {
+/* Carousel styles */
+.carousel {
   border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
   overflow: hidden;
 }
 
 .carousel-item {
-  height: 250px;
-  background: var(--light-bg);
-  color: var(--text-color);
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* Top stories list */
+.top-stories-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.story-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.story-card img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.story-content {
+  flex: 1;
+}
+
+.story-content h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.story-content p {
+  font-size: var(--fs-small);
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.story-meta {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 400px;
+  background: url('https://picsum.photos/1200/400?random=1') no-repeat center center;
+  background-size: cover;
+  margin-bottom: var(--section-margin);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-base);
+  color: white;
+  text-align: center;
+  padding: 0 var(--container-padding);
 }
 
-/* Top Stories List */
-.top-stories-list > div {
-  margin-bottom: 15px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.top-stories-list > div:last-child {
-  border: none;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: var(--fs-h1);
+  font-family: var(--font-family-heading);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: var(--fs-h4);
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: #222;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all var(--transition-speed);
+}
+
+.btn:hover {
+  background: #ffc600;
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   Latest News & Trending Sections
+   MAIN CONTENT AREA
    ========================================================================== */
+main {
+  margin-bottom: var(--section-margin);
+}
+
 .latest-news h2,
 .trending-news h2 {
   font-size: var(--fs-h2);
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  border-bottom: 2px solid var(--accent-color);
+  font-family: var(--font-family-heading);
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--primary-color);
 }
 
-/* News Cards (Using Bootstrap’s grid, but overriding card look) */
-.news-grid .col,
-.trending-list .news-item {
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+  margin-bottom: var(--section-margin);
+}
+
+.news-card {
   background: var(--card-bg);
-  padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  box-shadow: var(--shadow);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  margin-bottom: var(--grid-gap);
 }
 
-.news-grid .col:hover,
-.trending-list .news-item:hover {
+.news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px var(--shadow-hover);
+  box-shadow: var(--shadow-hover);
 }
 
-.news-grid img,
-.trending-list img {
+.news-card img {
   width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: var(--card-padding);
+}
+
+.news-content h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.news-content p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.news-meta {
+  font-size: var(--fs-small);
+  color: #888;
+}
+
+.trending-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.trending-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.trending-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  min-width: 2rem;
+}
+
+.trending-content h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: 0.25rem;
+}
+
+.trending-content p {
+  font-size: var(--fs-small);
+  color: #666;
 }
 
 /* ==========================================================================
-   Footer
+   FOOTER
    ========================================================================== */
 footer {
-  background: var(--primary-color);
-  color: #fff;
-  padding: 20px var(--container-padding);
-}
-
-footer p {
-  margin: 0;
+  background: var(--dark-bg);
+  color: white;
+  padding: 2rem 0;
   text-align: center;
 }
 
 /* ==========================================================================
-   Responsive Adjustments
+   RESPONSIVE ADJUSTMENTS
    ========================================================================== */
-/* Small Devices */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  :root {
+    --fs-base: 1.1rem;
+    --fs-h1: 2.5rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.75rem;
+    --fs-h4: 1.5rem;
+  }
+
+  .header-top {
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+
+  .navbar {
+    width: auto;
+  }
+
+  .navbar-nav {
+    flex-wrap: nowrap;
+  }
+
+  .breaking-top-stories .row {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .breaking-top-stories .col-lg-6 {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .top-stories-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .story-card {
+    flex-direction: column;
+  }
+
+  .story-card img {
+    width: 100%;
+    height: 150px;
+  }
+
   .hero {
     height: 300px;
   }
-  .hero-content {
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    padding: 15px;
-  }
-  .navbar-nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
 
-/* Medium Devices */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero {
-    height: 350px;
-  }
   .hero-content h1 {
-    font-size: calc(var(--fs-h1) - 0.5rem);
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
   }
 }
 
-/* ==========================================================================
-   End of CSS
-   ========================================================================== */
+@media (max-width: 576px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

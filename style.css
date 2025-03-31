@@ -1,596 +1,661 @@
 /* ==========================================================================
-   MODERN NEWS PORTAL LAYOUT - INSPIRED BY TOP NEWS SITES
+   CSS Variables & Global Settings
    ========================================================================== */
 :root {
-  /* Color Scheme */
-  --primary-color: #0056b3;      /* BBC Blue */
-  --secondary-color: #e31837;    /* CNN Red */
-  --accent-color: #ffd700;       /* Guardian Gold */
-  --text-color: #222;
-  --light-bg: #f8f9fa;
-  --card-bg: #ffffff;
-  --dark-bg: #1a1a1a;
-  --border-color: #e0e0e0;
+  /* Primary Colors */
+  --primary-color: #0d47a1;      /* Deep blue for headers & backgrounds */
+  --secondary-color: #1565c0;    /* Lighter blue for hover & secondary elements */
+  --accent-color: #d32f2f;       /* Accent red for CTAs & borders */
+  --text-color: #333333;         /* Primary text color */
+  --light-bg: #f9f9f9;           /* Light background for pages */
+  --card-bg: #ffffff;            /* Card backgrounds */
 
-  /* Typography */
-  --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  --font-family-heading: 'Playfair Display', serif;
-  --fs-base: clamp(1rem, 2vw, 1.125rem);
-  --fs-h1: clamp(1.8rem, 4vw, 2.5rem);
-  --fs-h2: clamp(1.5rem, 3.5vw, 2rem);
-  --fs-h3: clamp(1.3rem, 3vw, 1.75rem);
-  --fs-h4: clamp(1.1rem, 2.5vw, 1.5rem);
-  --fs-small: 0.85rem;
+  /* Shadows & Transitions */
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --transition-speed: 0.3s;
+
+  /* Fluid Typography using clamp() */
+  --fs-base: clamp(1rem, 2.5vw, 1.125rem);
+  --fs-h1: clamp(2rem, 4vw, 2.5rem);
+  --fs-h2: clamp(1.75rem, 3.5vw, 2.25rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
+  --fs-h4: clamp(1.25rem, 2.5vw, 1.75rem);
+
+  /* Fonts & Typography */
+  --font-family-base: 'Roboto', sans-serif;
+  --line-height-base: 1.6;
 
   /* Spacing */
-  --container-padding: 1.5rem;
-  --section-margin: 2.5rem;
-  --grid-gap: 1.5rem;
-  --card-padding: 1.25rem;
-
-  /* Effects */
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.12);
-  --transition-speed: 0.25s;
+  --container-padding: 20px;
+  --section-margin: 40px;
+  --grid-gap: 30px;
 }
 
 /* ==========================================================================
-   BASE STYLES
+   Global Reset & Base Styling
    ========================================================================== */
-body {
-  font-family: var(--font-family-base);
-  line-height: 1.6;
+html, body {
+  overflow-x: hidden;
+  background-color: var(--light-bg);
   color: var(--text-color);
-  background: var(--light-bg);
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color var(--transition-speed);
+html {
+  font-size: var(--fs-base);
 }
 
-a:hover {
-  color: var(--secondary-color);
+body {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* ==========================================================================
+   Utility Classes & Helpers
+   ========================================================================== */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
 
+.text-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.border-bottom-accent {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.transition {
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.box-shadow {
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
 /* ==========================================================================
-   HEADER & NAVIGATION (BBC/CNN STYLE)
+   Image Container
    ========================================================================== */
-.site-header {
-  background: var(--dark-bg);
-  color: white;
-  padding: 0.75rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.site-logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  font-family: var(--font-family-heading);
-  color: white;
-}
-
-.site-logo span {
-  color: var(--accent-color);
-}
-
-.main-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.main-nav a {
-  color: white;
-  font-weight: 500;
-  padding: 0.5rem 0;
+.img-container {
   position: relative;
-}
-
-.main-nav a:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-color);
-  transition: width var(--transition-speed);
-}
-
-.main-nav a:hover:after {
+  overflow: hidden;
+  border-radius: 8px;
   width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
 }
 
-.mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* ==========================================================================
-   NEWS TICKER (CNN STYLE)
-   ========================================================================== */
-.breaking-ticker {
-  background: var(--secondary-color);
-  color: white;
-  padding: 0.5rem 0;
-  font-weight: 700;
-}
-
-.ticker-container {
-  display: flex;
-  align-items: center;
-}
-
-.ticker-label {
-  background: black;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  margin-right: 1rem;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-.ticker-content {
-  flex-grow: 1;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* ==========================================================================
-   MAIN CONTENT LAYOUT (GUARDIAN/BBC HYBRID)
-   ========================================================================== */
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--section-margin);
-  padding: var(--section-margin) 0;
-}
-
-/* ==========================================================================
-   TOP STORIES SECTION (EQUAL WIDTH COLUMNS)
-   ========================================================================== */
-.top-stories-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--grid-gap);
-}
-
-.breaking-news-column, 
-.top-stories-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--primary-color);
-}
-
-.section-title {
-  font-size: var(--fs-h2);
-  font-family: var(--font-family-heading);
-  color: var(--primary-color);
-  margin: 0;
-}
-
-.view-all {
-  font-size: var(--fs-small);
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-/* Breaking News Card (BBC Style) */
-.breaking-card {
-  background: var(--card-bg);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  margin-bottom: var(--grid-gap);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-.breaking-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.breaking-card-large {
-  grid-column: span 2;
-}
-
-.breaking-card .image-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-}
-
-.breaking-card .image-wrapper img {
+.img-container img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.breaking-card .card-content {
-  padding: var(--card-padding);
-}
-
-.breaking-card .category-tag {
-  display: inline-block;
-  background: var(--secondary-color);
-  color: white;
-  font-size: var(--fs-small);
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 3px;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.breaking-card .card-title {
-  font-size: var(--fs-h3);
-  font-family: var(--font-family-heading);
-  margin: 0 0 0.75rem;
-  line-height: 1.3;
-}
-
-.breaking-card .card-excerpt {
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-.breaking-card .card-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--fs-small);
-  color: #777;
-}
-
-/* ==========================================================================
-   FEATURED STORIES GRID (CNN STYLE)
-   ========================================================================== */
-.featured-stories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--grid-gap);
-  margin-top: var(--section-margin);
-}
-
-.featured-card {
-  background: var(--card-bg);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  display: block;
   transition: transform var(--transition-speed);
 }
 
-.featured-card:hover {
-  transform: translateY(-3px);
-}
-
-.featured-card .image-wrapper {
-  height: 180px;
-  overflow: hidden;
-}
-
-.featured-card .image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.featured-card:hover .image-wrapper img {
+.img-container:hover img {
   transform: scale(1.05);
 }
 
-.featured-card .card-content {
-  padding: var(--card-padding);
-}
-
-.featured-card .card-title {
-  font-size: var(--fs-h4);
-  margin: 0 0 0.5rem;
-  line-height: 1.3;
-}
-
-.featured-card .card-meta {
-  font-size: var(--fs-small);
-  color: #777;
+/* ==========================================================================
+   Hide Hero Section
+   ========================================================================== */
+.hero {
+  display: none !important;
 }
 
 /* ==========================================================================
-   TRENDING NOW SECTION (BBC STYLE)
+   Adaptive Navigation
    ========================================================================== */
-.trending-section {
-  background: var(--dark-bg);
-  color: white;
-  padding: var(--section-margin) 0;
+header {
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 10px var(--container-padding);
 }
 
-.trending-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--grid-gap);
-}
-
-.trending-card {
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
 }
 
-.trending-number {
+.logo {
   font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  min-width: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.trending-content h3 {
-  font-size: var(--fs-h4);
-  margin: 0 0 0.5rem;
+/* Hamburger Toggle for Mobile */
+.nav-toggle {
+  display: none;
 }
 
-.trending-content p {
-  font-size: var(--fs-small);
-  color: #ccc;
-  margin: 0;
-}
-
-/* ==========================================================================
-   NEWSLETTER SECTION (GUARDIAN STYLE)
-   ========================================================================== */
-.newsletter-section {
-  background: var(--primary-color);
-  color: white;
-  padding: var(--section-margin) 0;
-  text-align: center;
-}
-
-.newsletter-content {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.newsletter-content h2 {
-  font-size: var(--fs-h2);
-  margin-bottom: 1rem;
-}
-
-.newsletter-content p {
-  margin-bottom: 1.5rem;
-  opacity: 0.9;
-}
-
-.newsletter-form {
-  display: flex;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.newsletter-form input {
-  flex-grow: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  font-size: 1rem;
-}
-
-.newsletter-form button {
-  background: var(--accent-color);
-  color: var(--text-color);
-  border: none;
-  padding: 0 1.5rem;
-  font-weight: 700;
-  border-radius: 0 4px 4px 0;
+.nav-toggle-label {
+  display: none;
   cursor: pointer;
-  transition: background var(--transition-speed);
+  width: 30px;
+  height: 30px;
+  position: relative;
 }
 
-.newsletter-form button:hover {
-  background: #ffc600;
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: #ffffff;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  position: absolute;
+  transition: all var(--transition-speed);
+}
+
+.nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle-label span::before {
+  content: "";
+  top: -10px;
+}
+
+.nav-toggle-label span::after {
+  content: "";
+  top: 10px;
+}
+
+/* Navigation Container */
+.navbar {
+  background: var(--primary-color);
+  padding: 10px var(--container-padding);
+}
+
+.navbar-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  padding: 0;
+}
+
+.navbar .nav-item {
+  flex: 0 0 auto;
+}
+
+.navbar .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background var(--transition-speed), transform 0.2s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  background: var(--secondary-color);
+  transform: scale(1.05);
 }
 
 /* ==========================================================================
-   FOOTER (HYBRID STYLE)
+   News Ticker
    ========================================================================== */
-.site-footer {
-  background: var(--dark-bg);
-  color: white;
-  padding: var(--section-margin) 0 0;
+.news-ticker {
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 5px var(--container-padding);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: var(--section-margin);
+.news-ticker marquee {
+  color: #ffffff;
 }
 
-.footer-column h3 {
-  font-size: var(--fs-h4);
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.75rem;
+/* ==========================================================================
+   Top News Section (Breaking News & Top Stories) - UPDATED LAYOUT
+   ========================================================================== */
+.top-news-container {
+  max-width: 1200px;
+  margin: var(--section-margin) auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 var(--container-padding);
 }
 
-.footer-column h3:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: var(--accent-color);
+.breaking-news {
+  flex: 1 1 40%;
+  min-width: 300px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.top-stories {
+  flex: 1 1 40%;
+  min-width: 300px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.footer-column li {
-  margin-bottom: 0.75rem;
+.breaking-news:hover,
+.top-stories:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-hover);
 }
 
-.footer-column a {
-  color: #ccc;
-  transition: color var(--transition-speed);
+.breaking-news h2,
+.top-stories h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--accent-color);
+  color: var(--primary-color);
 }
 
-.footer-column a:hover {
-  color: white;
+.breaking-news-item,
+.top-stories-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
 }
 
-.footer-bottom {
-  background: #111;
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: var(--fs-small);
+.breaking-news-item:last-child,
+.top-stories-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.breaking-news-item h3,
+.top-stories-item h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 8px;
+}
+
+.breaking-news-item p,
+.top-stories-item p {
+  font-size: var(--fs-base);
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.breaking-news-item .post-meta,
+.top-stories-item .post-meta {
+  font-size: 0.85rem;
   color: #777;
 }
 
 /* ==========================================================================
-   RESPONSIVE ADJUSTMENTS
+   Featured News Section (Between Top News and Posts Grid)
    ========================================================================== */
-@media (max-width: 1024px) {
-  .top-stories-section {
-    grid-template-columns: 1fr;
-  }
-  
-  .breaking-card-large {
-    grid-column: span 1;
-  }
+.featured-news {
+  max-width: 1200px;
+  margin: var(--section-margin) auto;
+  padding: 0 var(--container-padding);
 }
 
+.featured-news h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--accent-color);
+  color: var(--primary-color);
+}
+
+.featured-news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.featured-news-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.featured-news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-hover);
+}
+
+.featured-news-card .img-container {
+  margin-bottom: 15px;
+}
+
+.featured-news-card .featured-content {
+  padding: 15px;
+}
+
+.featured-news-card h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.featured-news-card p {
+  font-size: var(--fs-base);
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+/* ==========================================================================
+   Posts Grid Layout
+   ========================================================================== */
+.posts-grid {
+  max-width: 1200px;
+  margin: var(--section-margin) auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+  padding: 0 var(--container-padding);
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--shadow-hover);
+}
+
+.post-card .img-container {
+  margin-bottom: 15px;
+}
+
+.post-card .post-content {
+  padding: 15px;
+}
+
+.post-card h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.post-card p {
+  font-size: var(--fs-base);
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.post-card .card-footer {
+  padding: 10px 15px;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ==========================================================================
+   Post Content Clamping
+   ========================================================================== */
+.post-excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Featured Article Block
+   ========================================================================== */
+.featured-article {
+  background: var(--card-bg);
+  padding: 20px;
+  margin-bottom: var(--section-margin);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition-speed);
+}
+
+.featured-article:hover {
+  transform: scale(1.02);
+}
+
+.featured-article .img-container {
+  margin-bottom: 15px;
+}
+
+.featured-article h3 {
+  font-size: var(--fs-h2);
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.featured-article p {
+  font-size: var(--fs-base);
+  color: var(--text-color);
+}
+
+/* ==========================================================================
+   Sidebar Widget
+   ========================================================================== */
+.sidebar {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  margin-bottom: var(--section-margin);
+}
+
+.sidebar h4 {
+  font-size: var(--fs-h3);
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--secondary-color);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 8px;
+}
+
+.sidebar ul li a {
+  font-size: var(--fs-base);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+/* Small Devices */
 @media (max-width: 768px) {
-  .main-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--dark-bg);
-    flex-direction: column;
-    padding: 1rem;
-    gap: 0.5rem;
-  }
-  
-  .main-nav.active {
-    display: flex;
-  }
-  
-  .mobile-menu-toggle {
+  /* Navigation */
+  .nav-toggle-label {
     display: block;
   }
   
-  .ticker-label {
+  .navbar-nav {
     display: none;
+    flex-direction: column;
+    width: 100%;
   }
   
-  .featured-stories {
+  .nav-toggle:checked ~ .navbar-nav {
+    display: flex;
+  }
+  
+  /* Top News Layout */
+  .top-news-container {
+    flex-direction: column;
+  }
+  
+  .breaking-news,
+  .top-stories {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  
+  /* General Spacing */
+  .header-top,
+  .navbar,
+  .news-ticker {
+    padding: 10px;
+  }
+  
+  /* Post Grid */
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Featured News */
+  .featured-news-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 480px) {
-  :root {
-    --container-padding: 1rem;
-    --section-margin: 1.5rem;
-    --grid-gap: 1rem;
+/* Medium Devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-nav {
+    gap: 12px;
   }
   
-  .newsletter-form {
-    flex-direction: column;
+  .logo {
+    font-size: 1.8rem;
   }
   
-  .newsletter-form input,
-  .newsletter-form button {
-    width: 100%;
-    border-radius: 4px;
+  .navbar .nav-link {
+    font-size: 0.95rem;
+    padding: 8px 12px;
   }
   
-  .newsletter-form button {
-    margin-top: 0.5rem;
-    padding: 0.75rem;
+  .breaking-news h2,
+  .top-stories h2 {
+    font-size: 1.6rem;
+  }
+  
+  .featured-article h3 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large Devices */
+@media (min-width: 1025px) {
+  /* Ensure the top news sections stay side by side */
+  .top-news-container {
+    flex-wrap: nowrap;
+  }
+  
+  .breaking-news {
+    flex: 0 0 40%;
+  }
+  
+  .top-stories {
+    flex: 0 0 40%;
+  }
+  
+  /* Add a spacer in the middle if needed */
+  .top-news-container::after {
+    content: "";
+    flex: 0 0 20%;
   }
 }
 
 /* ==========================================================================
-   SPECIAL EFFECTS & ENHANCEMENTS
+   Footer & Additional Components
    ========================================================================== */
-/* Breaking news pulse effect */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+.footer-widgets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: var(--section-margin);
 }
 
-.breaking-card .category-tag.breaking {
-  animation: pulse 1.5s infinite;
+.footer-widget {
+  flex: 1 1 250px;
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
-/* Hover zoom effect */
-.hover-zoom {
-  overflow: hidden;
+.footer-widget h5 {
+  font-size: var(--fs-h3);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: var(--primary-color);
 }
 
-.hover-zoom img {
-  transition: transform 0.5s ease;
+.footer-widget ul {
+  list-style: none;
+  padding: 0;
 }
 
-.hover-zoom:hover img {
-  transform: scale(1.1);
+.footer-widget ul li {
+  margin-bottom: 8px;
 }
 
-/* Gradient underline */
-.gradient-underline {
-  position: relative;
+.footer-widget ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--transition-speed);
 }
 
-.gradient-underline:after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+.footer-widget ul li a:hover,
+.footer-widget ul li a:focus {
+  color: var(--secondary-color);
 }
+
+/* ==========================================================================
+   End of CSS
+   ========================================================================== */
